@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Comprehensive Fixes: 7-Issue Optimization Pack
+   ========================================================================== */
+
+/* --- Issue 3: Comment Area Header & Sort Pills (Clean, Horizontal, No Scrollbar) --- */
+.artalk > .atk-list > .atk-list-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 18px !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Duplicate horizontal sort tabs removed */
+
+/* --- Issue 7: Moments '..' Popover (Zero Blank Space, Snug Fit) --- */
+.moment-action-popover {
+  position: absolute !important;
+  right: calc(100% + 8px) !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(0.9) !important;
+  transform-origin: right center !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 3px 6px !important;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  z-index: 100 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: auto !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.moment-action-popover.is-active,
+.moment-action-popover.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.popover-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 4px 8px !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.popover-btn:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--primary, #3b82f6) !important;
+}
+
+.popover-divider {
+  width: 1px !important;
+  height: 14px !important;
+  background: var(--border-color) !important;
+  margin: 0 4px !important;
+  flex-shrink: 0 !important;
+}
+
+/* --- Issue 4 & 5: Blog Sidebar Tree Folder Collapsing & Tags Cloud --- */
+.tree-folder-title {
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+.tree-folder-title .tree-caret {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+
+.tree-group.open > .tree-folder-title .tree-caret {
+  transform: rotate(0deg) !important;
+}
+
+.tree-group:not(.open) > .tree-folder-title .tree-caret,
+.tree-group.collapsed > .tree-folder-title .tree-caret {
+  transform: rotate(-90deg) !important;
+}
+
+.tree-group:not(.open) > .tree-file-list,
+.tree-group.collapsed > .tree-file-list {
+  display: none !important;
+}
+
+.sidebar-tree-tags-section {
+  margin-top: 1.25rem !important;
+  padding-top: 1.1rem !important;
+  border-top: 1px dashed var(--border-color, rgba(148, 163, 184, 0.25)) !important;
+}
+
+.sidebar-tags-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+}
+
+.sidebar-tags-badge {
+  font-size: 0.72rem !important;
+  background: var(--bg-secondary) !important;
+  color: var(--text-muted) !important;
+  padding: 1px 6px !important;
+  border-radius: 9999px !important;
+  margin-left: auto !important;
+}
+
+.sidebar-tags-cloud {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+}
+
+.sidebar-tag-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  font-size: 0.78rem !important;
+  line-height: 1.35 !important;
+  color: var(--text-secondary) !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.sidebar-tag-item:hover {
+  color: var(--primary, #3b82f6) !important;
+  border-color: var(--primary, #3b82f6) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+.sidebar-tag-hash {
+  color: var(--primary, #3b82f6) !important;
+  font-weight: 600 !important;
+  opacity: 0.85 !important;
+}
+
+.sidebar-tag-name {
+  font-weight: 500 !important;
+}
+
+.sidebar-tag-count {
+  font-size: 0.7rem !important;
+  color: var(--text-muted) !important;
+  background: var(--bg-card) !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* --- Issue 6: About Page Centered Layout --- */
+.about-page-wrapper {
+  width: 100% !important;
+  min-height: calc(100vh - var(--header-height, 64px) - 140px) !important;
+  padding: 2.5rem 1.25rem 4rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.about-container {
+  width: 100% !important;
+  max-width: 820px !important;
+  margin: 0 auto !important;
+}
+
+.about-breadcrumbs-wrap {
+  margin-bottom: 1.5rem !important;
+}
+
+.about-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-lg, 12px) !important;
+  padding: 3rem 3.5rem !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.about-header {
+  text-align: center !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 2.25rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.about-title {
+  font-size: 2.25rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 0.6rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+.about-desc {
+  font-size: 1.05rem !important;
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+}
+
+.about-content {
+  line-height: 1.85 !important;
+  color: var(--text-primary) !important;
+  font-size: 1.025rem !important;
+}
+
+@media (max-width: 768px) {
+  .about-page-wrapper {
+    padding: 1.5rem 1rem 3rem !important;
+  }
+  .about-card {
+    padding: 1.75rem 1.25rem !important;
+  }
+  .about-title {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* --- Issue 1 & 2: Moments Pending Status & Delete Action --- */
+.comment-pending-badge {
+  font-size: 0.72rem !important;
+  color: #d97706 !important;
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  margin-left: 6px !important;
+  font-weight: 500 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+.moment-comment-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+.moment-comment-text-wrap {
+  flex: 1 !important;
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+.moment-comment-del-btn {
+  font-size: 0.75rem !important;
+  color: #94a3b8 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  opacity: 0.7 !important;
+  transition: all 0.15s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.moment-comment-del-btn:hover {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  opacity: 1 !important;
+}
+
+

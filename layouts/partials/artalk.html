@@ -1,0 +1,74 @@
+{{/* Comments Partial (Artalk v2.10.0 Self-Hosted) */}}
+{{ $artalkEnabled := false }}
+{{ if eq .Section "posts" }}
+  {{ $artalkEnabled = true }}
+{{ end }}
+
+{{ if isset .Params "comments" }}
+  {{ $artalkEnabled = .Params.comments }}
+{{ else if isset .Site.Params "artalk" }}
+  {{ if not .Site.Params.artalk.enable }}
+    {{ $artalkEnabled = false }}
+  {{ end }}
+{{ end }}
+
+{{/* Disable comments on About and non-post pages unless explicitly forced */}}
+{{ if or (eq .Section "about") (eq .Type "about") }}
+  {{ if not (eq .Params.comments true) }}
+    {{ $artalkEnabled = false }}
+  {{ end }}
+{{ end }}
+
+{{ if $artalkEnabled }}
+{{/* Load Artalk CSS & JS on demand */}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.js"></script>
+
+<section id="comments-section" class="comments-section animate-in animate-delay-1">
+  <div class="comments-card-container">
+    <div class="comments-header">
+      <div class="comments-header-left">
+        <div class="comments-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </div>
+        <h3 class="comments-title">
+          {{ if eq .Site.Language.Lang "en" }}Discussion &amp; Comments{{ else }}互动与评论{{ end }}
+        </h3>
+      </div>
+      <div class="comments-header-right" style="display: none;">
+        <span id="artalk_count">0</span>
+      </div>
+    </div>
+
+    {{/* Civility & Community Guideline Hint Banner */}}
+    <div class="comments-civility-banner">
+      <div class="civility-icon">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+      <span class="civility-text">{{ if eq .Site.Language.Lang "en" }}Be respectful and thoughtful. A peaceful space for everyone.{{ else }}文明你我他，和平靠大家{{ end }}</span>
+    </div>
+
+    {{/* Live Container */}}
+    <div id="artalk-comments" class="artalk-wrapper"
+         data-server="{{ .Site.Params.artalk.server }}"
+         data-site="{{ .Site.Params.artalk.site | default "inybit's blog" }}"
+         data-page-key="{{ .RelPermalink }}"
+         data-page-title="{{ .Title }}"
+         data-page-url="{{ .Permalink }}"
+         data-placeholder="{{ .Site.Params.artalk.placeholder | default (cond (eq .Site.Language.Lang "en") "Leave a thoughtful comment... (Be respectful to each other)" "说点什么吧... (文明你我他，和平靠大家)") }}"
+         data-emoticons="{{ .Site.Params.artalk.emoticons }}"
+         data-pv-el="{{ .Site.Params.artalk.pvEl | default "#artalk_pv" }}"
+         data-count-el="{{ .Site.Params.artalk.countEl | default "#artalk_count" }}"
+         data-flat-mode="{{ .Site.Params.artalk.flatMode | default "auto" }}"
+         data-lang="{{ if eq .Site.Language.Lang "en" }}en{{ else }}zh-CN{{ end }}"
+         data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}"
+         data-gravatar-default="{{ .Site.Params.artalk.gravatarDefault | default "identicon" }}">
+    </div>
+  </div>
+</section>
+{{ end }}

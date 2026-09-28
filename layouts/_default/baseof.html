@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" data-theme="light">
+  {{- partial "head.html" . -}}
+  <body>
+    <a href="#content" class="skip-to-content">跳至正文内容</a>
+    {{- partial "header.html" . -}}
+    <main id="content">
+      {{- block "main" . }}{{ end -}}
+    </main>
+    {{- partial "footer.html" . -}}
+
+    {{- if .Site.Params.search -}}
+      {{- partial "search-modal.html" . -}}
+      <script src="{{ "lib/flexsearch.bundle.min.js" | relURL }}"></script>
+      <script src="{{ "js/search.js" | relURL }}" defer></script>
+    {{- end -}}
+
+    {{- if .Site.Params.math -}}
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+          ],
+          throwOnError: false
+        });"></script>
+    {{- end -}}
+
+    {{- if .Site.Params.mermaid -}}
+      <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.esm.min.mjs';
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: isDark ? 'dark' : 'neutral',
+          securityLevel: 'loose'
+        });
+      </script>
+    {{- end -}}
+
+        {{/* Asciinema Player Library (Local) */}}
+    <link rel="stylesheet" href="{{ "lib/asciinema-player.css" | relURL }}">
+    <script src="{{ "lib/asciinema-player.min.js" | relURL }}"></script>
+
+    {{/* Main JS Bundle via Hugo Pipes */}}
+    {{ $js := resources.Match "js/modules/*.js" | resources.Concat "js/main.js" | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  </body>
+</html>

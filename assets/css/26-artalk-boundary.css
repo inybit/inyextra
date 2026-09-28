@@ -1,0 +1,107 @@
+/* ===================================================
+   Artalk v2.10.0 Clear Boundaries, Dropdown Fix & Civility Hint
+   =================================================== */
+.comments-card-container {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+  margin-top: 2rem;
+}
+
+.comments-civility-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(234, 88, 12, 0.08);
+  border: 1px solid rgba(234, 88, 12, 0.25);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #EA580C;
+  line-height: 1.4;
+}
+
+.comments-civility-banner .civility-icon {
+  display: flex;
+  align-items: center;
+  color: #EA580C;
+}
+
+/* Fix Artalk dropdown overlapping and boundaries */
+.artalk .atk-dropdown {
+  position: absolute !important;
+  z-index: 1000 !important;
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18) !important;
+  padding: 0.35rem !important;
+  min-width: 96px !important;
+}
+
+.artalk .atk-dropdown-item {
+  padding: 0.4rem 0.85rem !important;
+  font-size: 0.82rem !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+}
+
+.artalk .atk-dropdown-item:hover {
+  background: var(--bg-tertiary) !important;
+  color: #EA580C !important;
+}
+
+.artalk .atk-main-editor {
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--bg-card) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.artalk .atk-main-editor:focus-within {
+  border-color: #EA580C !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.14) !important;
+}
+
+.artalk .atk-header-item input {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.artalk .atk-comment-wrap {
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 1.1rem 0 !important;
+}
+
+.artalk .atk-avatar img {
+  border-radius: 50% !important;
+  border: 1px solid var(--border-light) !important;
+}
+
+/* Moments Artalk Sync Note */
+.moment-drawer-hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  padding-left: 2px;
+}
+
+.moment-drawer-hint .artalk-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.moment-drawer-hint .artalk-indicator svg {
+  color: #10B981;
+}
+

@@ -1,0 +1,252 @@
+/* ==========================================================================
+   1. Interactive FileTree Shortcode Styling
+   ========================================================================== */
+.filetree-container {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-card);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+.filetree-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.filetree-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.filetree-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.filetree-dot.dot-red { background-color: #ef4444; }
+.filetree-dot.dot-yellow { background-color: #f59e0b; }
+.filetree-dot.dot-green { background-color: #10b981; }
+
+.filetree-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.filetree-actions {
+  display: flex;
+  align-items: center;
+}
+
+.filetree-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filetree-toggle-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+.filetree-body {
+  padding: 0.75rem 0.5rem;
+  background: var(--bg-card);
+  overflow-x: auto;
+}
+
+.filetree-tree-root {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.tree-node {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.tree-node-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 12px;
+  border-radius: 6px;
+  cursor: default;
+  transition: background-color 0.15s ease;
+}
+
+.tree-node-row:hover {
+  background-color: var(--bg-secondary);
+}
+
+.tree-folder > .tree-node-row {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+}
+
+.tree-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.tree-chevron-spacer {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.tree-folder.is-open > .tree-node-row .tree-chevron {
+  transform: rotate(90deg);
+  color: var(--text-secondary);
+}
+
+.tree-children {
+  display: none;
+  position: relative;
+  margin-left: 8px;
+  border-left: 1px dashed var(--border-color);
+}
+
+.tree-folder.is-open > .tree-children {
+  display: block;
+}
+
+.tree-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.folder-icon {
+  color: #f59e0b;
+}
+
+.tree-label {
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.folder-label {
+  color: var(--text-primary);
+}
+
+.file-label {
+  color: var(--text-secondary);
+}
+
+.tree-node-row:hover .file-label {
+  color: var(--text-primary);
+}
+
+.tree-badge {
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  margin-left: auto;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* File extension colors */
+.file-ext-md { color: #8b5cf6; }
+.file-ext-go { color: #00add8; }
+.file-ext-py { color: #3b82f6; }
+.file-ext-js, .file-ext-ts { color: #eab308; }
+.file-ext-html { color: #f97316; }
+.file-ext-css { color: #38bdf8; }
+.file-ext-json, .file-ext-toml, .file-ext-yaml, .file-ext-yml { color: #10b981; }
+.file-ext-cast, .file-ext-sh { color: #f43f5e; }
+
+/* ==========================================================================
+   2. Asciinema Player (Local .cast / demo.cast playback)
+   ========================================================================== */
+.asciinema-player-container {
+  width: 100%;
+  min-height: 280px;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  background: #18191e;
+}
+
+.asciinema-wrapper {
+  margin: 1.75rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #18191e;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.asciinema-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: #21222c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  user-select: none;
+}
+
+.asciinema-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   3. Strict Removal of All Artalk Branding & Badges
+   ========================================================================== */
+.atk-copyright,
+.atk-brand,
+.atk-version,
+[class*="atk-copyright"],
+[class*="atk-brand"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+

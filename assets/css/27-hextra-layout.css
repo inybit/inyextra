@@ -1,0 +1,149 @@
+/* ===================================================
+   Hextra-Proportioned Homepage & Feature Cards
+   =================================================== */
+.hextra-home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hextra-hero {
+  padding: 4.5rem 0 3.5rem 0;
+  text-align: left;
+}
+
+.hextra-hero-inner {
+  max-width: 860px;
+}
+
+.hextra-hero-title {
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.03em;
+}
+
+.hextra-hero-title .hero-brand {
+  display: block;
+  font-size: 3.6rem;
+  font-weight: 850;
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 40%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 0.85rem;
+}
+
+.hextra-hero-title .hero-lead {
+  display: block;
+  font-size: 1.95rem;
+  font-weight: 750;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.hextra-hero-desc {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 0 2.2rem 0;
+}
+
+.hextra-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hextra-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0284C7;
+  color: #FFFFFF !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.2s ease;
+}
+
+.hextra-primary-btn:hover {
+  background: #0369A1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+}
+
+.hextra-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-light);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hextra-secondary-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: #EA580C;
+  transform: translateY(-2px);
+}
+
+/* Hextra Feature Cards Grid */
+.hextra-features-section {
+  margin-bottom: 4.5rem;
+}
+
+.hextra-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.hextra-cards-grid.top-row {
+  margin-bottom: 1.5rem;
+}
+
+.hextra-feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 330px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s ease;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.hextra-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: #EA580C;
+  box-shadow: 0 14px 34px rgba(234, 88, 12, 0.12);
+}
+
+.card-main-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card-main-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;

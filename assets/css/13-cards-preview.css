@@ -1,0 +1,284 @@
+  color: var(--accent);
+  font-weight: 600;
+}
+.mock-doc-content {
+  flex: 1;
+}
+.mock-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+.mock-callout-bar {
+  font-size: 0.6rem;
+  background: rgba(14, 165, 233, 0.1);
+  border-left: 2px solid var(--accent-secondary);
+  padding: 0.2rem 0.35rem;
+  border-radius: 2px;
+  color: var(--accent-secondary);
+  margin-bottom: 0.35rem;
+}
+[data-theme="dark"] .mock-callout-bar {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+}
+.mock-line-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.m-line {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  width: 90%;
+}
+[data-theme="dark"] .m-line {
+  background: rgba(255, 255, 255, 0.1);
+}
+.m-line.short { width: 60%; }
+
+/* 2. Code Mockup */
+.mock-code-topbar {
+  padding: 0.3rem 0.65rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+[data-theme="dark"] .mock-code-topbar {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.mock-file-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.mock-code-lines {
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--code-text);
+}
+.mock-code-lines .c-kw { color: #cf222e; font-weight: 600; }
+[data-theme="dark"] .mock-code-lines .c-kw { color: #ff7b72; }
+.mock-code-lines .c-str { color: #0a3069; }
+[data-theme="dark"] .mock-code-lines .c-str { color: #a5d6ff; }
+.mock-code-lines .c-fn { color: #8250df; }
+[data-theme="dark"] .mock-code-lines .c-fn { color: #d2a8ff; }
+
+/* 3. Search Mockup */
+.mock-search-topbar {
+  padding: 0.4rem 0.65rem;
+  border-bottom: 1px solid var(--border-light);
+}
+[data-theme="dark"] .mock-search-topbar {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.mock-search-input-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.68rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+.mock-search-list {
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.mock-search-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+.mock-search-item.active {
+  background: var(--bg-secondary);
+}
+.mock-res-cat {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.mock-res-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  .hextra-cards-grid,
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 640px) {
+  .hextra-cards-grid,
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 5. Modern FileTree Component */
+.filetree-container {
+  margin: 1.75em 0;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.filetree-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.85rem;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-border);
+  user-select: none;
+}
+.filetree-dots {
+  display: flex;
+  gap: 6px;
+}
+.filetree-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: #FF5F56; }
+.dot-yellow { background: #FFBD2E; }
+.dot-green { background: #27C93F; }
+
+.filetree-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+.filetree-title svg {
+  stroke: var(--accent);
+}
+
+.filetree-body {
+  padding: 1.15rem 1.25rem;
+  overflow-x: auto;
+}
+.filetree-pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--code-text);
+  white-space: pre !important;
+}
+.filetree-pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+
+/* 6. Diagrams (Mermaid) */
+.mermaid-container {
+  margin: 2em 0;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 7. LaTeX Math */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.75rem 0;
+}
+
+/* --- Footer --- */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.footer-inner {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.footer-slogan {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 1024px) {
+  .toc-sidebar {
+    display: none;
+  }
+  .article-layout {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links,
+  .search-btn-shortcut {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .hero-title {
+    font-size: 2.75rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .post-card {
+    padding: 1.25rem;
+  }
+  .post-title {
+    font-size: 1.75rem;
+  }
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+  .search-dialog {
+    width: 95%;
+    max-height: 90vh;
+  }
+}
+

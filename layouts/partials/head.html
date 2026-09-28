@@ -1,0 +1,100 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {{/* SEO Title */}}
+  <title>{{ if .IsHome }}{{ .Site.Title }} — Every bit of thoughts &amp; code{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+  {{/* Canonical & Robots */}}
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="robots" content="index, follow">
+
+  {{/* SEO Meta */}}
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description | default "Every bit of thoughts & code." }}{{ end }}{{ end }}">
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ with .Params.tags }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+
+  {{/* Open Graph */}}
+  <meta property="og:title" content="{{ .Title | default .Site.Title }}">
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description | default "" }}{{ end }}{{ end }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  {{ if .IsPage }}
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+    {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+  {{ end }}
+
+  {{/* Twitter Card */}}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description | default "" }}{{ end }}{{ end }}">
+
+  {{/* JSON-LD Structured Data for Articles */}}
+  {{ if .IsPage }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ .Title | jsonify }},
+    "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | truncate 160 | jsonify }}{{ end }},
+    "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+    "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+    "url": {{ .Permalink | jsonify }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ .Permalink | jsonify }}
+    },
+    "author": {
+      "@type": "Person",
+      "name": {{ .Site.Params.author | default "InyBit" | jsonify }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ .Site.Title | jsonify }}
+    }
+  }
+  </script>
+  {{ end }}
+
+  {{/* Fonts: Inter + JetBrains Mono */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  {{/* Main CSS Bundle via Hugo Pipes */}}
+  {{ $css := resources.Match "css/*.css" | resources.Concat "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+  {{/* KaTeX CSS for LaTeX Math */}}
+  {{ if .Site.Params.math }}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  {{ end }}
+
+  {{/* Favicon */}}
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
+
+  {{/* RSS */}}
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  {{/* Theme initialization (prevent flash, defaults to system) */}}
+  <script>
+    (function(){
+      try {
+        var mode = localStorage.getItem('inyextra-theme') || localStorage.getItem('inybit-theme') || 'system';
+        var theme = mode;
+        if (mode === 'system') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme-mode', mode);
+      } catch (e) {}
+    })();
+  </script>
+
+  {{/* Hugo Generator */}}
+  {{ hugo.Generator }}
+</head>

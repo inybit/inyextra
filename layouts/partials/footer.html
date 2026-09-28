@@ -1,0 +1,62 @@
+<footer class="site-footer minimal-footer">
+  <div class="footer-inner">
+    {{/* Minimal Flat Switchers Row (Unboxed, Simple, Clean) */}}
+    <div class="footer-meta-bar">
+      {{/* Language Switcher */}}
+      {{ if hugo.IsMultilingual }}
+      <div class="footer-lang-minimal">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        {{ $translations := .AllTranslations | default .Site.Home.AllTranslations }}
+        {{ range $idx, $trans := $translations }}
+          {{ if gt $idx 0 }}<span class="sep">/</span>{{ end }}
+          <a href="{{ $trans.RelPermalink }}" class="lang-link{{ if eq $trans.Site.Language.Lang $.Site.Language.Lang }} is-active{{ end }}">
+            {{ if eq $trans.Site.Language.Lang "zh-cn" }}简体中文{{ else }}English{{ end }}
+          </a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <span class="meta-divider">·</span>
+
+      {{/* Theme Switcher (Flat 3-State Text & Icons) */}}
+      <div class="footer-theme-minimal">
+        <button type="button" class="theme-flat-btn" data-theme-set="light" title="{{ if eq .Site.Language.Lang "en" }}Light mode{{ else }}浅色模式{{ end }}">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <span>{{ if eq .Site.Language.Lang "en" }}Light{{ else }}浅色{{ end }}</span>
+        </button>
+        <span class="sep">/</span>
+        <button type="button" class="theme-flat-btn" data-theme-set="dark" title="{{ if eq .Site.Language.Lang "en" }}Dark mode{{ else }}深色模式{{ end }}">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span>{{ if eq .Site.Language.Lang "en" }}Dark{{ else }}深色{{ end }}</span>
+        </button>
+        <span class="sep">/</span>
+        <button type="button" class="theme-flat-btn is-active" data-theme-set="system" title="{{ if eq .Site.Language.Lang "en" }}Follow System (Default){{ else }}跟随系统 (默认){{ end }}">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>{{ if eq .Site.Language.Lang "en" }}Auto{{ else }}系统{{ end }}</span>
+        </button>
+      </div>
+    </div>
+
+    {{/* Nav Links */}}
+    <div class="footer-nav-links">
+      <a href="{{ "/posts/" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Blog{{ else }}博客{{ end }}</a>
+      <a href="{{ "/moments/" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Moments{{ else }}朋友圈{{ end }}</a>
+      <a href="{{ "/archives/" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Archives{{ else }}归档{{ end }}</a>
+      <a href="{{ "/tags/" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Tags{{ else }}标签{{ end }}</a>
+      <a href="{{ "/about/" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}About{{ else }}关于{{ end }}</a>
+      {{ with .OutputFormats.Get "RSS" }}
+        <a href="{{ .RelPermalink }}" aria-label="RSS Feed">RSS</a>
+      {{ end }}
+    </div>
+
+    {{/* Slogan & Copyright */}}
+    <div class="footer-copyright-row">
+      <span class="footer-slogan-text">{{ $.Site.Params.slogan | default (printf "%s · %s" ($.Site.Params.sloganTech | default "Every bit of thoughts & code.") ($.Site.Params.sloganLife | default "Just a tiny bit of my world.")) }}</span>
+      <span class="footer-copy-text">&copy; {{ now.Year }} <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a> · Powered by <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a></span>
+    </div>
+  </div>
+</footer>

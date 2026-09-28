@@ -1,0 +1,4 @@
+{{- $name := .Get "name" | default (.Get 0) -}}
+<div class="tab-pane" role="tabpanel" data-tab-name="{{ $name | urlize }}" aria-label="{{ $name }}">
+  {{ .Inner | markdownify }}
+</div>

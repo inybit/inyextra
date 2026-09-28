@@ -1,0 +1,12 @@
+name = 'inyextra'
+license = 'MIT'
+licenselink = 'https://github.com/yourusername/inyextra/blob/main/LICENSE'
+description = 'A modern, high-performance Hugo theme featuring WeChat Moments feed, Hextra-style design, full-text search and Artalk comments.'
+homepage = 'https://github.com/yourusername/inyextra'
+tags = ['blog', 'moments', 'minimal', 'responsive', 'dark-mode', 'clean', 'artalk', 'search']
+features = ['blog', 'moments', 'dark mode', 'responsive', 'syntax highlighting', 'offline search', 'artalk comments', 'filetree', 'asciinema']
+min_version = '0.128.0'
+
+[author]
+  name = 'inybit'
+  homepage = 'https://inybit.dev'

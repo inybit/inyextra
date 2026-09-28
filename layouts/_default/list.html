@@ -1,0 +1,76 @@
+{{ define "main" }}
+{{ if eq .Section "posts" }}
+<div class="article-layout with-sidebar no-toc">
+  {{ partial "sidebar-tree.html" . }}
+  <div class="article-main-container">
+    {{ partial "breadcrumbs.html" . }}
+    <div class="blog-list-header animate-in">
+      <h1 class="page-title">{{ $defaultTitle := cond (eq .Site.Language.Lang "en") "Blog" "博客" }}{{ .Title | default $defaultTitle }}</h1>
+      <p class="blog-list-subtitle">{{ if eq .Site.Language.Lang "en" }}Thoughts, architecture, and code snippets recorded bit by bit.{{ else }}记录思考与代码的每一个比特，分享技术与生活的点点滴滴。{{ end }}</p>
+    </div>
+
+    {{ $paginator := .Paginate .Pages }}
+    <div class="post-list animate-in animate-delay-1">
+      {{ range $paginator.Pages }}
+        <a href="{{ .RelPermalink }}" class="post-card">
+          <div class="post-card-top">
+            <div class="post-card-tags">
+              {{ range first 3 .Params.tags }}
+                <span class="tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          </div>
+          <h3 class="post-card-title">{{ .Title }}</h3>
+          {{ with .Summary }}
+            <p class="post-card-summary">{{ . | plainify | truncate 160 }}</p>
+          {{ end }}
+          <div class="post-card-footer">
+            <span>{{ if .ReadingTime }}{{ .ReadingTime }} {{ if eq $.Site.Language.Lang "en" }}min read{{ else }}分钟阅读{{ end }}{{ end }}</span>
+            <span class="post-card-arrow">
+              {{ if eq $.Site.Language.Lang "en" }}Read article{{ else }}阅读全文{{ end }}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+
+    {{ partial "pagination.html" . }}
+  </div>
+</div>
+{{ else }}
+<div class="content-container">
+  <h1 class="page-title animate-in">{{ .Title }}</h1>
+
+  {{ $paginator := .Paginate .Pages }}
+  <div class="post-list animate-in animate-delay-1">
+    {{ range $paginator.Pages }}
+      <a href="{{ .RelPermalink }}" class="post-card">
+        <div class="post-card-top">
+          <div class="post-card-tags">
+            {{ range first 3 .Params.tags }}
+              <span class="tag">{{ . }}</span>
+            {{ end }}
+          </div>
+          <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        </div>
+        <h3 class="post-card-title">{{ .Title }}</h3>
+        {{ with .Summary }}
+          <p class="post-card-summary">{{ . | plainify | truncate 160 }}</p>
+        {{ end }}
+        <div class="post-card-footer">
+          <span>{{ if .ReadingTime }}{{ .ReadingTime }} {{ if eq $.Site.Language.Lang "en" }}min read{{ else }}分钟阅读{{ end }}{{ end }}</span>
+          <span class="post-card-arrow">
+            {{ if eq $.Site.Language.Lang "en" }}Read article{{ else }}阅读全文{{ end }}
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+
+  {{ partial "pagination.html" . }}
+</div>
+{{ end }}
+{{ end }}

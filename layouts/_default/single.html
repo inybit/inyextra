@@ -1,0 +1,95 @@
+{{ define "main" }}
+{{- if eq .Section "about" -}}
+<div class="about-page-wrapper">
+  <div class="about-container">
+    {{/* Breadcrumbs */}}
+    <div class="about-breadcrumbs-wrap">
+      {{ partial "breadcrumbs.html" . }}
+    </div>
+
+    <article class="about-card animate-in">
+      <header class="about-header">
+        <h1 class="about-title">{{ .Title }}</h1>
+        {{ with .Description }}
+          <p class="about-desc">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      <div class="content about-content">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</div>
+{{- else -}}
+<div class="article-layout with-sidebar">
+  {{/* Left Sidebar File Tree Navigation for Blog Posts */}}
+  {{- if eq .Section "posts" -}}
+    {{ partial "sidebar-tree.html" . }}
+  {{- end -}}
+
+  <div class="article-main-container">
+    {{/* Breadcrumbs */}}
+    {{ partial "breadcrumbs.html" . }}
+
+    <article class="article-body-wrapper animate-in">
+      {{/* Post Header */}}
+      <header class="post-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ partial "post-meta.html" . }}
+      </header>
+
+      {{/* Post Content */}}
+      <div class="content post-content">
+        {{ .Content }}
+      </div>
+
+      {{/* Post Navigation Cards (Configurable Toggle) */}}
+      {{ $enablePostNav := true }}
+      {{ if isset .Params "postnav" }}
+        {{ $enablePostNav = .Params.postNav }}
+      {{ else if isset .Site.Params "postnav" }}
+        {{ $enablePostNav = .Site.Params.postNav }}
+      {{ end }}
+
+      {{ if $enablePostNav }}
+        {{ $prev := .PrevInSection }}
+        {{ $next := .NextInSection }}
+        {{ if or $prev $next }}
+        <nav class="post-nav" aria-label="{{ if eq .Site.Language.Lang "en" }}Post Navigation{{ else }}文章导航{{ end }}">
+          {{ if $prev }}
+            <a href="{{ $prev.RelPermalink }}" class="post-nav-card prev">
+              <span class="post-nav-dir">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                {{ if eq $.Site.Language.Lang "en" }}Previous{{ else }}上一篇{{ end }}
+              </span>
+              <span class="post-nav-title">{{ $prev.Title }}</span>
+            </a>
+          {{ else }}
+            <div class="post-nav-card-empty"></div>
+          {{ end }}
+          {{ if $next }}
+            <a href="{{ $next.RelPermalink }}" class="post-nav-card next">
+              <span class="post-nav-dir">
+                {{ if eq $.Site.Language.Lang "en" }}Next{{ else }}下一篇{{ end }}
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+              <span class="post-nav-title">{{ $next.Title }}</span>
+            </a>
+          {{ else }}
+            <div class="post-nav-card-empty"></div>
+          {{ end }}
+        </nav>
+        {{ end }}
+      {{ end }}
+
+      {{/* Artalk Comments Section */}}
+      {{ partial "artalk.html" . }}
+    </article>
+  </div>
+
+  {{/* Table of Contents (TOC) */}}
+  {{ partial "toc.html" . }}
+</div>
+{{- end -}}
+{{ end }}

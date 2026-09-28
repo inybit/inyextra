@@ -1,0 +1,26 @@
+{{- if and .Site.Params.breadcrumbs (not .IsHome) -}}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ .Site.Home.RelPermalink }}"><span itemprop="name">{{ if eq .Site.Language.Lang "en" }}Home{{ else }}首页{{ end }}</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {{- $position := 2 -}}
+    {{- range .Ancestors.Reverse -}}
+      {{- if not .IsHome -}}
+        <li class="separator">/</li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="{{ .RelPermalink }}"><span itemprop="name">{{ .Title }}</span></a>
+          <meta itemprop="position" content="{{ $position }}" />
+        </li>
+        {{- $position = add $position 1 -}}
+      {{- end -}}
+    {{- end -}}
+    <li class="separator">/</li>
+    <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+      <span itemprop="name">{{ .Title }}</span>
+      <meta itemprop="position" content="{{ $position }}" />
+    </li>
+  </ol>
+</nav>
+{{- end -}}

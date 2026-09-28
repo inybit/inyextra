@@ -1,0 +1,172 @@
+/* ===================================================
+   404 Page (Unified Theme Gradient & Card Aesthetic)
+   =================================================== */
+.page-404-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 58vh;
+  padding: 2.5rem 0;
+}
+
+.page-404-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  width: 100%;
+  padding: 3.5rem 2.5rem 3rem 2.5rem;
+  background: linear-gradient(150deg, #FFFFFF 0%, #FFFFFF 65%, rgba(234, 88, 12, 0.03) 85%, rgba(14, 165, 233, 0.035) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-404-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 15%, rgba(234, 88, 12, 0.08) 0%, rgba(14, 165, 233, 0.06) 45%, transparent 70%);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-404-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #EA580C 0%, #F59E0B 50%, #0EA5E9 100%);
+  opacity: 0.9;
+  z-index: 3;
+}
+
+[data-theme="dark"] .page-404-card {
+  background: linear-gradient(150deg, #18181B 0%, #18181B 65%, rgba(251, 146, 60, 0.05) 85%, rgba(56, 189, 248, 0.05) 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .page-404-card::before {
+  background: radial-gradient(circle at 50% 15%, rgba(251, 146, 60, 0.12) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
+}
+
+[data-theme="dark"] .page-404-card::after {
+  background: linear-gradient(90deg, #FB923C 0%, #FBBF24 50%, #38BDF8 100%);
+}
+
+.page-404-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1) 0%, rgba(14, 165, 233, 0.08) 100%);
+  color: var(--accent);
+  border: 1px solid rgba(234, 88, 12, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+  z-index: 1;
+}
+
+[data-theme="dark"] .page-404-badge {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.16) 0%, rgba(56, 189, 248, 0.1) 100%);
+  border-color: rgba(251, 146, 60, 0.35);
+}
+
+.page-404-code {
+  font-size: clamp(4.5rem, 12vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 45%, #0EA5E9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  z-index: 1;
+}
+
+[data-theme="dark"] .page-404-code {
+  background: linear-gradient(135deg, #FB923C 0%, #FBBF24 45%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-404-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+
+.page-404-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.page-404-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, #EA580C 0%, #D97706 100%);
+  color: #FFFFFF !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.35);
+  color: #FFFFFF !important;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.4rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+  transform: translateY(-2px);
+}
+

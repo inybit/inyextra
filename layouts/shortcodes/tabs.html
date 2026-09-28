@@ -1,0 +1,14 @@
+{{- $items := .Get "items" -}}
+<div class="tabs-wrapper" {{ with $items }}data-items="{{ . }}"{{ end }}>
+  <div class="tabs-header" role="tablist">
+    {{- if $items -}}
+      {{- range $i, $item := split $items "," -}}
+        {{- $itemClean := trim $item " " -}}
+        <button type="button" class="tab-btn{{ if eq $i 0 }} active{{ end }}" role="tab" data-tab-target="{{ $itemClean | urlize }}">{{ $itemClean }}</button>
+      {{- end -}}
+    {{- end -}}
+  </div>
+  <div class="tabs-body">
+    {{ .Inner }}
+  </div>
+</div>

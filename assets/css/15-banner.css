@@ -1,0 +1,66 @@
+/* ===================================================
+   Top Announcement Banner (Site-wide, Dismissible)
+   =================================================== */
+.site-banner {
+  background: linear-gradient(90deg, rgba(234, 88, 12, 0.08) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(14, 165, 233, 0.08) 100%);
+  border-bottom: 1px solid rgba(234, 88, 12, 0.15);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1001;
+  transition: all var(--transition-normal);
+}
+
+[data-theme="dark"] .site-banner {
+  background: linear-gradient(90deg, rgba(251, 146, 60, 0.12) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(56, 189, 248, 0.1) 100%);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.banner-inner {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0.55rem var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.banner-text {
+  font-weight: 500;
+}
+
+.banner-action {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+.banner-action:hover {
+  color: var(--accent-hover);
+}
+
+.banner-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.banner-close-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+

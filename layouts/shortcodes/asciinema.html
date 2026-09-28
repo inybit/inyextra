@@ -1,0 +1,54 @@
+{{- $file := .Get "file" | default (.Get "src") | default (.Get "url") -}}
+{{- $id := .Get "id" | default (.Get "key") | default (.Get 0) -}}
+{{- $title := .Get "title" | default "Terminal Session (demo.cast)" -}}
+{{- $theme := .Get "theme" | default "nord" -}}
+{{- $speed := .Get "speed" | default "1" -}}
+{{- $autoplay := .Get "autoplay" | default "false" -}}
+{{- $loop := .Get "loop" | default "false" -}}
+{{- $castSrc := "" -}}
+{{- if $file -}}
+  {{- if hasPrefix $file "http" -}}
+    {{- $castSrc = $file -}}
+  {{- else if hasPrefix $file "/" -}}
+    {{- $castSrc = $file -}}
+  {{- else -}}
+    {{- $castSrc = printf "/casts/%s" $file -}}
+  {{- end -}}
+{{- else if not $id -}}
+  {{- $castSrc = "/casts/demo.cast" -}}
+{{- end -}}
+
+<div class="asciinema-wrapper">
+  <div class="asciinema-topbar">
+    <div class="asciinema-dots" aria-hidden="true">
+      <span class="m-dot red"></span>
+      <span class="m-dot yellow"></span>
+      <span class="m-dot green"></span>
+    </div>
+    <span class="asciinema-title">{{ $title }}</span>
+    <div class="asciinema-badge">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+      <span>{{ if $castSrc }}demo.cast{{ else }}#{{ $id }}{{ end }}</span>
+    </div>
+  </div>
+  <div class="asciinema-body">
+    {{- if $castSrc -}}
+      <div class="asciinema-player-container"
+           data-asciinema-cast="{{ $castSrc }}"
+           data-theme="{{ $theme }}"
+           data-speed="{{ $speed }}"
+           data-autoplay="{{ $autoplay }}"
+           data-loop="{{ $loop }}">
+      </div>
+    {{- else -}}
+      <iframe src="https://asciinema.org/a/{{ $id }}/iframe?theme={{ $theme }}&autoplay={{ $autoplay }}&loop={{ $loop }}&speed={{ $speed }}"
+              id="asciicast-iframe-{{ $id }}"
+              name="asciicast-iframe-{{ $id }}"
+              scrolling="no"
+              allowfullscreen="true"
+              loading="lazy"
+              class="asciinema-player-iframe"
+              title="{{ $title }}"></iframe>
+    {{- end -}}
+  </div>
+</div>

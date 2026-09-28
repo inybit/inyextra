@@ -1,0 +1,266 @@
+/* ==========================================================================
+   4. Notification Center & Sidebar Theme Integration
+   ========================================================================== */
+.atk-layer-wrap {
+  --at-color-main: #3b82f6 !important;
+  --at-color-font: #09090b !important;
+  --at-color-deep: #09090b !important;
+  --at-color-sub: #71717a !important;
+  --at-color-grey: #a1a1aa !important;
+  --at-color-bg: #ffffff !important;
+  --at-color-bg-grey: #f4f4f5 !important;
+  --at-color-border: #e4e4e7 !important;
+  font-family: inherit !important;
+}
+
+html[data-theme="dark"] .atk-layer-wrap,
+.atk-layer-wrap.atk-dark-mode {
+  --at-color-main: #60a5fa !important;
+  --at-color-font: #f4f4f5 !important;
+  --at-color-deep: #f4f4f5 !important;
+  --at-color-sub: #a1a1aa !important;
+  --at-color-grey: #71717a !important;
+  --at-color-bg: #18181b !important;
+  --at-color-bg-grey: #27272a !important;
+  --at-color-border: #27272a !important;
+}
+
+.atk-sidebar-layer {
+  background: var(--bg-card, #ffffff) !important;
+  border-left: 1px solid var(--border-color, #e4e4e7) !important;
+  box-shadow: -8px 0 35px rgba(0, 0, 0, 0.25) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .atk-sidebar-layer {
+  background: #18181b !important;
+  border-left-color: #27272a !important;
+}
+
+.atk-sidebar-inner {
+  background: transparent !important;
+}
+
+.atk-sidebar-header {
+  background: var(--bg-card, #ffffff) !important;
+  border-bottom: 1px solid var(--border-color, #e4e4e7) !important;
+  color: var(--text-primary) !important;
+  padding: 12px 18px !important;
+}
+
+html[data-theme="dark"] .atk-sidebar-header {
+  background: #18181b !important;
+  border-bottom-color: #27272a !important;
+}
+
+.atk-sidebar-header .atk-sidebar-close {
+  color: var(--text-secondary) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  padding: 4px !important;
+}
+
+.atk-sidebar-header .atk-sidebar-close:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.atk-layer-dialog-wrap {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.atk-layer-dialog {
+  background: var(--bg-card, #ffffff) !important;
+  border: 1px solid var(--border-color, #e4e4e7) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+  color: var(--text-primary) !important;
+  overflow: hidden !important;
+}
+
+html[data-theme="dark"] .atk-layer-dialog {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+
+/* Artalk Error & Notification Toasts (Clean visible red banner with high contrast) */
+.artalk .atk-notify-wrap,
+.atk-notify-wrap {
+  z-index: 1000 !important;
+}
+
+.artalk .atk-notify,
+.atk-notify {
+  background-color: var(--bg-card, #ffffff) !important;
+  border: 1px solid #fca5a5 !important;
+  border-left: 4px solid #ef4444 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  padding: 9px 15px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  animation: notifyFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.artalk .atk-notify .atk-notify-content,
+.atk-notify .atk-notify-content {
+  color: #ef4444 !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+html[data-theme="dark"] .artalk .atk-notify,
+html[data-theme="dark"] .atk-notify {
+  background-color: #1e293b !important;
+  border-color: #7f1d1d !important;
+  border-left-color: #ef4444 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .artalk .atk-notify .atk-notify-content,
+html[data-theme="dark"] .atk-notify .atk-notify-content {
+  color: #fca5a5 !important;
+}
+
+/* Liked state for WeChat moments (Cannot cancel) */
+.popover-btn.like-btn.is-liked {
+  color: #ef4444 !important;
+  cursor: default !important;
+}
+
+.popover-btn.like-btn.is-liked .heart-icon-btn {
+  fill: #ef4444 !important;
+}
+
+/* Artalk Header Input Styling: Clearly mark required fields */
+.artalk .atk-header {
+  position: relative !important;
+}
+
+.artalk .atk-header input.atk-name,
+.artalk .atk-header input.atk-email {
+  font-weight: 500 !important;
+}
+
+.artalk .atk-header input.atk-name::placeholder,
+.artalk .atk-header input.atk-email::placeholder {
+  color: var(--text-secondary, #64748b) !important;
+  opacity: 0.9 !important;
+}
+
+/* ==========================================================================
+   5. Rectified Comment Sorting UI (Clean Button & Modern Dropdown)
+   ========================================================================== */
+.artalk > .atk-list > .atk-list-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 0 16px 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 16px !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-comment-count {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  color: var(--text-primary) !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 12px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+  position: relative !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap:hover {
+  background: var(--bg-tertiary, rgba(255, 255, 255, 0.08)) !important;
+  border-color: var(--primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-arrow-down-icon {
+  display: inline-block !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-left: 2px solid currentColor !important;
+  border-bottom: 2px solid currentColor !important;
+  border-top: none !important;
+  border-right: none !important;
+  transform: rotate(-45deg) translateY(-2px) !important;
+  margin-left: 4px !important;
+  transition: transform 0.2s ease !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap:hover .atk-arrow-down-icon {
+  transform: rotate(135deg) translateY(-2px) !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  right: 0 !important;
+  left: auto !important;
+  min-width: 120px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
+  padding: 6px !important;
+  list-style: none !important;
+  z-index: 100 !important;
+  margin: 0 !important;
+  transform-origin: top right !important;
+  animation: dropdownIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown-item span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.15s ease !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown-item:hover span {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown-item.active span {
+  background: rgba(59, 130, 246, 0.12) !important;
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap .atk-dropdown-item.active span::after {
+  content: "✓" !important;
+  font-size: 0.8rem !important;
+  margin-left: 8px !important;
+  color: var(--primary) !important;
+}
+

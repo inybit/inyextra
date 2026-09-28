@@ -1,0 +1,50 @@
+/* =================================================================
+   SECTION HEADERS & POST LIST & POST CARDS
+   ================================================================= */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.section-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+  text-decoration: none;
+}
+.section-link:hover {
+  gap: var(--spacing-sm);
+  color: var(--accent-hover);
+}
+
+/* Page Title (for Post list page) */
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Post List */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+

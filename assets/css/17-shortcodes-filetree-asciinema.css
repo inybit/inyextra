@@ -1,0 +1,123 @@
+/* ===================================================
+   Collapsible & Beautified FileTree Component
+   =================================================== */
+.filetree-actions .filetree-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.filetree-actions .filetree-toggle-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.filetree-tree-root {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.tree-node-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+.tree-node-row:hover {
+  background: var(--bg-tertiary);
+}
+
+.tree-node-toggle {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+.tree-node-row.closed .tree-node-toggle {
+  transform: rotate(-90deg);
+}
+
+.tree-node-icon {
+  display: inline-flex;
+  align-items: center;
+}
+.tree-node-icon.folder { color: #EAB308; }
+.tree-node-icon.file { color: var(--text-muted); }
+
+.tree-node-label {
+  font-weight: 500;
+}
+.tree-node-row.is-folder .tree-node-label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.tree-node-children {
+  margin-left: 1.25rem;
+  border-left: 1px dashed var(--border);
+  padding-left: 0.5rem;
+  transition: all var(--transition-fast);
+}
+.tree-node-children.collapsed {
+  display: none;
+}
+
+/* ===================================================
+   Asciinema Terminal Embed Wrapper
+   =================================================== */
+.asciinema-wrapper {
+  margin: 2rem 0;
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--code-bg);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+}
+.asciinema-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-border);
+}
+.asciinema-dots {
+  display: flex;
+  gap: 5px;
+}
+.asciinema-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.asciinema-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+.asciinema-body {
+  padding: 0.5rem;
+  background: #121314;
+}
+

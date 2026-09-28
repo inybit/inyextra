@@ -1,0 +1,187 @@
+/* =================================================================
+   CHROMA SYNTAX HIGHLIGHTING — LIGHT & DARK THEMES
+   ================================================================= */
+
+/* LIGHT MODE SYNTAX */
+:root:not([data-theme="dark"]) .chroma {
+  color: #24292E;
+  background-color: #F8FAFC;
+}
+:root:not([data-theme="dark"]) .chroma .k,
+:root:not([data-theme="dark"]) .chroma .kc,
+:root:not([data-theme="dark"]) .chroma .kd,
+:root:not([data-theme="dark"]) .chroma .kn,
+:root:not([data-theme="dark"]) .chroma .kp,
+:root:not([data-theme="dark"]) .chroma .kr,
+:root:not([data-theme="dark"]) .chroma .kt { color: #CF222E; font-weight: 600; }
+
+:root:not([data-theme="dark"]) .chroma .s,
+:root:not([data-theme="dark"]) .chroma .sa,
+:root:not([data-theme="dark"]) .chroma .sb,
+:root:not([data-theme="dark"]) .chroma .sc,
+:root:not([data-theme="dark"]) .chroma .dl,
+:root:not([data-theme="dark"]) .chroma .sd,
+:root:not([data-theme="dark"]) .chroma .s2,
+:root:not([data-theme="dark"]) .chroma .se,
+:root:not([data-theme="dark"]) .chroma .sh,
+:root:not([data-theme="dark"]) .chroma .si,
+:root:not([data-theme="dark"]) .chroma .sx,
+:root:not([data-theme="dark"]) .chroma .sr,
+:root:not([data-theme="dark"]) .chroma .s1,
+:root:not([data-theme="dark"]) .chroma .ss { color: #0A3069; }
+
+:root:not([data-theme="dark"]) .chroma .nf,
+:root:not([data-theme="dark"]) .chroma .fm { color: #8250DF; font-weight: 600; }
+
+:root:not([data-theme="dark"]) .chroma .na,
+:root:not([data-theme="dark"]) .chroma .nc,
+:root:not([data-theme="dark"]) .chroma .no,
+:root:not([data-theme="dark"]) .chroma .nd,
+:root:not([data-theme="dark"]) .chroma .ni,
+:root:not([data-theme="dark"]) .chroma .ne,
+:root:not([data-theme="dark"]) .chroma .nl,
+:root:not([data-theme="dark"]) .chroma .nn,
+:root:not([data-theme="dark"]) .chroma .nx,
+:root:not([data-theme="dark"]) .chroma .py,
+:root:not([data-theme="dark"]) .chroma .nt,
+:root:not([data-theme="dark"]) .chroma .nv,
+:root:not([data-theme="dark"]) .chroma .vc,
+:root:not([data-theme="dark"]) .chroma .vg,
+:root:not([data-theme="dark"]) .chroma .vi,
+:root:not([data-theme="dark"]) .chroma .vm { color: #1F2328; }
+
+:root:not([data-theme="dark"]) .chroma .nb,
+:root:not([data-theme="dark"]) .chroma .bp { color: #6639BA; }
+
+:root:not([data-theme="dark"]) .chroma .m,
+:root:not([data-theme="dark"]) .chroma .mb,
+:root:not([data-theme="dark"]) .chroma .mf,
+:root:not([data-theme="dark"]) .chroma .mh,
+:root:not([data-theme="dark"]) .chroma .mi,
+:root:not([data-theme="dark"]) .chroma .il,
+:root:not([data-theme="dark"]) .chroma .mo { color: #0550AE; }
+
+:root:not([data-theme="dark"]) .chroma .o,
+:root:not([data-theme="dark"]) .chroma .ow,
+:root:not([data-theme="dark"]) .chroma .or { color: #0550AE; }
+
+:root:not([data-theme="dark"]) .chroma .c,
+:root:not([data-theme="dark"]) .chroma .ch,
+:root:not([data-theme="dark"]) .chroma .cm,
+:root:not([data-theme="dark"]) .chroma .c1,
+:root:not([data-theme="dark"]) .chroma .cs,
+:root:not([data-theme="dark"]) .chroma .cp,
+:root:not([data-theme="dark"]) .chroma .cpf { color: #6E7781; font-style: italic; }
+
+/* DARK MODE SYNTAX */
+[data-theme="dark"] .chroma {
+  color: #E6EDF3;
+  background-color: #0D1117;
+}
+[data-theme="dark"] .chroma .k,
+[data-theme="dark"] .chroma .kc,
+[data-theme="dark"] .chroma .kd,
+[data-theme="dark"] .chroma .kn,
+[data-theme="dark"] .chroma .kp,
+[data-theme="dark"] .chroma .kr,
+[data-theme="dark"] .chroma .kt { color: #FF7B72; font-weight: 600; }
+
+[data-theme="dark"] .chroma .s,
+[data-theme="dark"] .chroma .sa,
+[data-theme="dark"] .chroma .sb,
+[data-theme="dark"] .chroma .sc,
+[data-theme="dark"] .chroma .dl,
+[data-theme="dark"] .chroma .sd,
+[data-theme="dark"] .chroma .s2,
+[data-theme="dark"] .chroma .se,
+[data-theme="dark"] .chroma .sh,
+[data-theme="dark"] .chroma .si,
+[data-theme="dark"] .chroma .sx,
+[data-theme="dark"] .chroma .sr,
+[data-theme="dark"] .chroma .s1,
+[data-theme="dark"] .chroma .ss { color: #A5D6FF; }
+
+[data-theme="dark"] .chroma .nf,
+[data-theme="dark"] .chroma .fm { color: #D2A8FF; font-weight: 600; }
+
+[data-theme="dark"] .chroma .nc,
+[data-theme="dark"] .chroma .no,
+[data-theme="dark"] .chroma .nd,
+[data-theme="dark"] .chroma .ni,
+[data-theme="dark"] .chroma .ne,
+[data-theme="dark"] .chroma .nl,
+[data-theme="dark"] .chroma .nn,
+[data-theme="dark"] .chroma .nx,
+[data-theme="dark"] .chroma .py,
+[data-theme="dark"] .chroma .nt,
+[data-theme="dark"] .chroma .nv,
+[data-theme="dark"] .chroma .vc,
+[data-theme="dark"] .chroma .vg,
+[data-theme="dark"] .chroma .vi,
+[data-theme="dark"] .chroma .vm { color: #E6EDF3; }
+
+[data-theme="dark"] .chroma .nb,
+[data-theme="dark"] .chroma .bp { color: #79C0FF; }
+
+[data-theme="dark"] .chroma .m,
+[data-theme="dark"] .chroma .mb,
+[data-theme="dark"] .chroma .mf,
+[data-theme="dark"] .chroma .mh,
+[data-theme="dark"] .chroma .mi,
+[data-theme="dark"] .chroma .il,
+[data-theme="dark"] .chroma .mo { color: #79C0FF; }
+
+[data-theme="dark"] .chroma .o,
+[data-theme="dark"] .chroma .ow,
+[data-theme="dark"] .chroma .or { color: #FF7B72; }
+
+[data-theme="dark"] .chroma .c,
+[data-theme="dark"] .chroma .ch,
+[data-theme="dark"] .chroma .cm,
+[data-theme="dark"] .chroma .c1,
+[data-theme="dark"] .chroma .cs,
+[data-theme="dark"] .chroma .cp,
+[data-theme="dark"] .chroma .cpf { color: #8B949E; font-style: italic; }
+
+/* --- TOC Sidebar --- */
+.toc-sidebar {
+  width: 260px;
+  position: sticky;
+  top: calc(var(--header-height) + 1.25rem);
+  flex-shrink: 0;
+}
+.toc-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--card-shadow);
+}
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+.toc-header svg {
+  stroke: var(--accent);
+}
+.toc-content nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+.toc-content nav ul ul {
+  padding-left: 0.9rem;
+}
+.toc-content li {
+  margin-bottom: 0.45rem;
+}
+.toc-content a {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.4;

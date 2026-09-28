@@ -1,0 +1,160 @@
+   Artalk Self-Hosted Comments System Integration
+   =================================================== */
+.comments-section {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.comments-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.comments-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.15) 0%, rgba(14, 165, 233, 0.15) 100%);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comments-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.comments-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(234, 88, 12, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.comments-count-badge {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.artalk-reserved-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.artalk-reserved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.9rem;
+}
+
+.artalk-reserved-badge .status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
+.artalk-reserved-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.artalk-config-snippet {
+  background: var(--bg-code);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.artalk-config-snippet .hl-val {
+  color: #10B981;
+}
+.artalk-config-snippet .hl-comment {
+  color: var(--text-muted);
+}
+
+.artalk-mock-editor {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.artalk-mock-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.artalk-mock-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.artalk-mock-textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  min-height: 80px;
+  margin-bottom: 0.75rem;
+}
+
+.artalk-mock-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artalk-mock-tip {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.artalk-mock-submit {
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.4rem 1.15rem;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;

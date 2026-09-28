@@ -1,0 +1,249 @@
+baseURL = 'https://inybit.dev/'
+defaultContentLanguage = 'zh-cn'
+title = 'InyBit'
+theme = 'inyextra'
+
+# 多语言配置
+[languages]
+  [languages.zh-cn]
+    locale = 'zh-cn'
+    label = '简体中文'
+    weight = 1
+    title = 'InyBit'
+    [languages.zh-cn.params]
+      description = '记录思考与代码的每一个比特，分享世界里的一点一滴。'
+      author = 'InyBit'
+      sloganTech = 'Every bit of thoughts & code.'
+      sloganLife = 'Just a tiny bit of my world.'
+      search = true
+      math = true
+      mermaid = true
+      toc = true
+      breadcrumbs = true
+      postNav = true
+    [[languages.zh-cn.menus.main]]
+      name = '首页'
+      url = '/'
+      weight = 1
+      [languages.zh-cn.menus.main.params]
+        icon = 'home'
+    [[languages.zh-cn.menus.main]]
+      name = '博客'
+      url = '/posts/'
+      weight = 2
+      [languages.zh-cn.menus.main.params]
+        icon = 'book-open'
+    [[languages.zh-cn.menus.main]]
+      name = '朋友圈'
+      url = '/moments/'
+      weight = 3
+      [languages.zh-cn.menus.main.params]
+        icon = 'camera'
+    [[languages.zh-cn.menus.main]]
+      identifier = 'more'
+      name = '更多'
+      url = '#'
+      weight = 4
+      [languages.zh-cn.menus.main.params]
+        icon = 'more-horizontal'
+    [[languages.zh-cn.menus.main]]
+      parent = 'more'
+      name = '标签'
+      url = '/tags/'
+      weight = 1
+      [languages.zh-cn.menus.main.params]
+        icon = 'tag'
+    [[languages.zh-cn.menus.main]]
+      parent = 'more'
+      name = '归档'
+      url = '/archives/'
+      weight = 2
+      [languages.zh-cn.menus.main.params]
+        icon = 'archive'
+    [[languages.zh-cn.menus.main]]
+      parent = 'more'
+      name = '关于'
+      url = '/about/'
+      weight = 3
+      [languages.zh-cn.menus.main.params]
+        icon = 'user'
+
+  [languages.en]
+    locale = 'en'
+    label = 'English'
+    weight = 2
+    title = 'InyBit'
+    [languages.en.params]
+      description = 'Every bit of thoughts & code. Just a tiny bit of my world.'
+      author = 'InyBit'
+      sloganTech = 'Every bit of thoughts & code.'
+      sloganLife = 'Just a tiny bit of my world.'
+      search = true
+      math = true
+      mermaid = true
+      toc = true
+      breadcrumbs = true
+      postNav = true
+    [[languages.en.menus.main]]
+      name = 'Home'
+      url = '/en/'
+      weight = 1
+      [languages.en.menus.main.params]
+        icon = 'home'
+    [[languages.en.menus.main]]
+      name = 'Blog'
+      url = '/en/posts/'
+      weight = 2
+      [languages.en.menus.main.params]
+        icon = 'book-open'
+    [[languages.en.menus.main]]
+      name = 'Moments'
+      url = '/en/moments/'
+      weight = 3
+      [languages.en.menus.main.params]
+        icon = 'camera'
+    [[languages.en.menus.main]]
+      identifier = 'more'
+      name = 'More'
+      url = '#'
+      weight = 4
+      [languages.en.menus.main.params]
+        icon = 'more-horizontal'
+    [[languages.en.menus.main]]
+      parent = 'more'
+      name = 'Tags'
+      url = '/en/tags/'
+      weight = 1
+      [languages.en.menus.main.params]
+        icon = 'tag'
+    [[languages.en.menus.main]]
+      parent = 'more'
+      name = 'Archives'
+      url = '/en/archives/'
+      weight = 2
+      [languages.en.menus.main.params]
+        icon = 'archive'
+    [[languages.en.menus.main]]
+      parent = 'more'
+      name = 'About'
+      url = '/en/about/'
+      weight = 3
+      [languages.en.menus.main.params]
+        icon = 'user'
+
+# 通用参数
+[params]
+  search = true
+  math = true
+  mermaid = true
+  toc = true
+  breadcrumbs = true
+  postNav = true
+
+# 顶部公告横幅
+[params.banner]
+  enable = true
+  id = "inybit-banner-v1"
+  text = "🎉 欢迎来到 InyBit！全新朋友圈与时间线归档已就绪。"
+  textEn = "🎉 Welcome to InyBit! Moments and Timeline Archives are now live."
+  link = "/posts/hello-world/"
+  dismissible = true
+
+# 自托管评论系统 Artalk 配置
+[params.artalk]
+  enable = true
+  server = "https://artalk.inybit.com"
+  site = "inybit's blog"
+  placeholder = "说点什么吧..."
+  emoticons = "https://cdn.jsdelivr.net/gh/ArtalkJS/Emoticons/grpm/"
+  pvEl = "#artalk_pv"
+  countEl = "#artalk_count"
+  flatMode = "auto"
+  gravatarMirror = "https://cravatar.cn/avatar/"
+  gravatarDefault = "identicon" # 可选: "identicon" (几何图案), "retro" (8-bit像素脸), "monsterid" (怪兽), "robohash" (机器人)
+
+# 朋友圈自定义封面与头像
+[params.moments]
+  cover = "" # 留空使用精美渐变背景，或填写图片路径如 "/images/moments-cover.jpg"
+  avatar = "" # 留空使用品牌字母徽标，或填写头像路径如 "/images/avatar.jpg"
+
+# 首页精选服务导航卡片
+[[params.services]]
+  name = "IT-Tools"
+  nameEn = "IT-Tools"
+  category = "开发工具"
+  categoryEn = "Dev Tools"
+  description = "开箱即用的在线实用开发运维工具箱，集成 Base64、JWT、加解密、Hash、颜色转换与 Cron 等效率利器。"
+  descriptionEn = "Handy online tools for developers and sysadmins: Base64, JWT, Hash, Regex, Color convert & Cron parser."
+  url = "https://it-tools.tech"
+  icon = "tool"
+  badge = "精选"
+  badgeEn = "Featured"
+
+[[params.services]]
+  name = "图床"
+  nameEn = "Image Hosting"
+  category = "图像存储"
+  categoryEn = "Cloud Storage"
+  description = "极速稳定的自建多引擎聚合图床，支持 WebP 自动无损压缩、全球 CDN 加速与多重外链防盗链保护。"
+  descriptionEn = "High-performance self-hosted image hosting with automatic WebP compression, CDN acceleration and security."
+  url = "#"
+  icon = "image"
+  badge = "高速"
+  badgeEn = "Fast"
+
+[[params.services]]
+  name = '"针"不蹉'
+  nameEn = "Server Status"
+  category = "服务监控"
+  categoryEn = "Monitoring"
+  description = "基于现代化探针的分布式服务器状态实时大屏，全方位多节点监测主机 CPU、内存、网络负载与 SLA 在线率。"
+  descriptionEn = "Real-time distributed server status dashboard tracking CPU, memory, network load and node SLA uptime."
+  url = "#"
+  icon = "activity"
+  badge = "在线"
+  badgeEn = "Live"
+
+# 分页
+[pagination]
+  pagerSize = 10
+
+# 代码高亮配置
+[markup]
+  [markup.highlight]
+    noClasses = false
+    guessSyntax = true
+    lineNos = false
+    tabWidth = 2
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+      [markup.goldmark.extensions.extras]
+        [markup.goldmark.extensions.extras.delete]
+          enable = true
+      [markup.goldmark.extensions.typographer]
+        disable = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+# 分类法
+[taxonomies]
+  tag = 'tags'
+
+# 输出格式
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+
+[outputFormats.JSON]
+  mediaType = 'application/json'
+  baseName = 'index'
+  isPlainText = true

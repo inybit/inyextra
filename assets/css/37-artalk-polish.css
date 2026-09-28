@@ -1,0 +1,293 @@
+/* ==========================================================================
+   Artalk & Comments System Polish: Single Count, Original Right-Aligned Sort Dropdown, Round Avatars
+   ========================================================================== */
+
+/* --- 1. Clean List Header: Single Count on Left + Original Dropdown on Right --- */
+.comments-header-right {
+  display: none !important; /* Eliminate duplicate comment count at top */
+}
+
+.artalk > .atk-list > .atk-list-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 0 16px 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 18px !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Hide original dropdown arrow inside comment count */
+.artalk .atk-comment-count .atk-arrow-down-icon {
+  display: none !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-right-action {
+  display: none !important;
+}
+
+/* Comment Count text on Left */
+.artalk > .atk-list > .atk-list-header .atk-comment-count {
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  color: var(--text-primary) !important;
+  cursor: default !important;
+  display: flex !important;
+  align-items: baseline !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-comment-count .atk-text {
+  cursor: default !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-comment-count-num {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: var(--primary, #3b82f6) !important;
+  margin-right: 4px !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-dropdown-wrap {
+  position: static !important;
+  cursor: default !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Right-aligned Sort Dropdown Trigger Box (Original Artalk Style) */
+.artalk > .atk-list > .atk-list-header .atk-sort-trigger-box,
+.atk-sort-trigger-box {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+.atk-sort-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 12px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  user-select: none !important;
+}
+
+.atk-sort-btn:hover {
+  background: var(--bg-card) !important;
+  color: var(--primary, #3b82f6) !important;
+  border-color: var(--primary, #3b82f6) !important;
+}
+
+.atk-sort-caret {
+  font-size: 0.75rem !important;
+  transition: transform 0.2s ease !important;
+  color: var(--text-muted) !important;
+}
+
+.atk-sort-trigger-box.is-open .atk-sort-caret {
+  transform: rotate(180deg) !important;
+}
+
+/* Dropdown Menu (Original Artalk Dropdown Style, Right-Aligned) */
+/* Strictly hide dropdown by default with high specificity */
+.artalk .atk-dropdown,
+.artalk > .atk-list > .atk-list-header .atk-dropdown,
+.artalk .atk-sort-trigger-box .atk-dropdown,
+.atk-sort-trigger-box .atk-dropdown {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  right: 0 !important;
+  left: auto !important;
+  min-width: 110px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  padding: 4px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  z-index: 100 !important;
+  display: none !important;
+  flex-direction: column !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Show dropdown only when open */
+.artalk .atk-sort-trigger-box.is-open .atk-dropdown,
+.atk-sort-trigger-box.is-open .atk-dropdown {
+  display: flex !important;
+  animation: dropdownFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.artalk .atk-sort-trigger-box .atk-dropdown-item,
+.atk-sort-trigger-box .atk-dropdown-item {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.artalk .atk-sort-trigger-box .atk-dropdown-item span,
+.atk-sort-trigger-box .atk-dropdown-item span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 6px 12px !important;
+  border-radius: 5px !important;
+  font-size: 0.82rem !important;
+  line-height: 1.4 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.artalk .atk-sort-trigger-box .atk-dropdown-item:hover span,
+.atk-sort-trigger-box .atk-dropdown-item:hover span {
+  background: var(--bg-secondary) !important;
+  color: var(--primary, #3b82f6) !important;
+}
+
+.artalk .atk-sort-trigger-box .atk-dropdown-item.active span,
+.atk-sort-trigger-box .atk-dropdown-item.active span {
+  background: rgba(59, 130, 246, 0.08) !important;
+  color: var(--primary, #3b82f6) !important;
+  font-weight: 600 !important;
+}
+
+.artalk .atk-sort-trigger-box .atk-dropdown-item.active span::after,
+.atk-sort-trigger-box .atk-dropdown-item.active span::after {
+  content: "✓" !important;
+  margin-left: 6px !important;
+  font-size: 0.75rem !important;
+  color: var(--primary, #3b82f6) !important;
+}
+
+/* Dark Mode for Sort Dropdown */
+html[data-theme="dark"] .atk-sort-btn {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .atk-sort-btn:hover {
+  background: #334155 !important;
+  color: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+html[data-theme="dark"] .artalk .atk-sort-trigger-box .atk-dropdown,
+html[data-theme="dark"] .atk-sort-trigger-box .atk-dropdown {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .artalk .atk-sort-trigger-box .atk-dropdown-item span,
+html[data-theme="dark"] .atk-sort-trigger-box .atk-dropdown-item span {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .artalk .atk-sort-trigger-box .atk-dropdown-item:hover span,
+html[data-theme="dark"] .atk-sort-trigger-box .atk-dropdown-item:hover span {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .artalk .atk-sort-trigger-box .atk-dropdown-item.active span,
+html[data-theme="dark"] .atk-sort-trigger-box .atk-dropdown-item.active span {
+  background: rgba(96, 165, 250, 0.15) !important;
+  color: #60a5fa !important;
+}
+
+/* --- 2. Artalk Round Avatars & Strict 44px Sizing --- */
+.artalk .atk-comment > .atk-avatar {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  margin-right: 12px !important;
+  border: 2px solid var(--border-color, rgba(148, 163, 184, 0.25)) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  background: var(--bg-secondary) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.artalk .atk-comment > .atk-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 50% !important;
+  background: var(--bg-secondary) !important;
+}
+
+.artalk .atk-comment > .atk-avatar:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25) !important;
+  border-color: var(--primary, #3b82f6) !important;
+}
+
+/* Nested child comment avatars (replies) */
+.artalk .atk-comment-children .atk-comment > .atk-avatar {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  max-width: 34px !important;
+  margin-right: 8px !important;
+}
+
+/* Comment editor avatar preview (if present) */
+.artalk .atk-header .atk-item .atk-avatar {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+[data-theme="dark"] .artalk .atk-avatar,
+[data-theme="dark"] .artalk .atk-comment > .atk-avatar {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] .artalk .atk-comment > .atk-avatar:hover {
+  border-color: var(--primary, #3b82f6) !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* --- 3. Guest Mode Moments Comments (No fake delete button) --- */
+.moment-comment-del-btn {
+  display: none !important;
+}
+

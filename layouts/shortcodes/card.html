@@ -1,0 +1,176 @@
+{{- $title := .Get "title" -}}
+{{- $subtitle := .Get "subtitle" | default (.Get "desc") -}}
+{{- $href := .Get "href" -}}
+{{- $icon := .Get "icon" -}}
+{{- $preview := .Get "preview" -}}
+{{- $image := .Get "image" -}}
+{{- $tag := .Get "tag" -}}
+{{- $isLink := not (not $href) -}}
+{{- $trimmedInner := "" -}}
+{{- with .Inner -}}
+  {{- $trimmedInner = strings.TrimSpace . -}}
+{{- end -}}
+
+{{- if $isLink -}}
+<a href="{{ $href }}" class="hextra-card card-item is-link{{ if or $image $preview }} has-preview{{ end }}"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+  <div class="hextra-card-content">
+    <div class="hextra-card-header">
+      {{- with $icon }}
+        <span class="hextra-card-icon">{{ . | safeHTML }}</span>
+      {{- end }}
+      <h3 class="hextra-card-title">{{ $title }}</h3>
+      {{- with $tag }}
+        <span class="hextra-card-tag">{{ . }}</span>
+      {{- end }}
+    </div>
+    {{- with $subtitle }}
+      <p class="hextra-card-subtitle">{{ . }}</p>
+    {{- end }}
+    {{- if $trimmedInner }}
+      <div class="hextra-card-body">{{ $trimmedInner | markdownify }}</div>
+    {{- end }}
+  </div>
+  {{- with $preview }}
+    <div class="hextra-card-preview preview-{{ . }}">
+      {{- if eq . "doc" -}}
+        <div class="mock-doc-window">
+          <div class="mock-doc-topbar">
+            <div class="mock-dots"><span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span></div>
+            <span class="mock-bar-text">Documentation · inybit</span>
+          </div>
+          <div class="mock-doc-body">
+            <div class="mock-doc-sidebar">
+              <div class="mock-item active">Introduction</div>
+              <div class="mock-item">Getting Started</div>
+              <div class="mock-item">Configuration</div>
+            </div>
+            <div class="mock-doc-content">
+              <div class="mock-title">Introduction</div>
+              <div class="mock-callout-bar">Hello! Welcome to inybit.</div>
+              <div class="mock-line-row"><span class="m-line"></span><span class="m-line short"></span></div>
+            </div>
+          </div>
+        </div>
+      {{- else if eq . "code" -}}
+        <div class="mock-code-window">
+          <div class="mock-code-topbar">
+            <span class="mock-file-tag">main.go</span>
+          </div>
+          <div class="mock-code-lines">
+            <span class="c-kw">package</span> main<br>
+            <span class="c-kw">import</span> <span class="c-str">"fmt"</span><br><br>
+            <span class="c-kw">func</span> <span class="c-fn">main</span>() {<br>
+            &nbsp;&nbsp;fmt.<span class="c-fn">Println</span>(<span class="c-str">"Hello, inybit!"</span>)<br>
+            }
+          </div>
+        </div>
+      {{- else if eq . "search" -}}
+        <div class="mock-search-window">
+          <div class="mock-search-topbar">
+            <div class="mock-search-input-pill">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>hello</span>
+            </div>
+          </div>
+          <div class="mock-search-list">
+            <div class="mock-search-item active">
+              <span class="mock-res-cat">DOCUMENTATION</span>
+              <span class="mock-res-title">Documentation</span>
+            </div>
+            <div class="mock-search-item">
+              <span class="mock-res-cat">SYNTAX HIGHLIGHTING</span>
+              <span class="mock-res-title">Syntax Highlighting</span>
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
+  {{- end }}
+  {{- with $image }}
+    <div class="hextra-card-image">
+      <img src="{{ . | relURL }}" alt="{{ $title }}" loading="lazy" />
+    </div>
+  {{- end }}
+</a>
+{{- else -}}
+<div class="hextra-card card-item{{ if or $image $preview }} has-preview{{ end }}">
+  <div class="hextra-card-content">
+    <div class="hextra-card-header">
+      {{- with $icon }}
+        <span class="hextra-card-icon">{{ . | safeHTML }}</span>
+      {{- end }}
+      <h3 class="hextra-card-title">{{ $title }}</h3>
+      {{- with $tag }}
+        <span class="hextra-card-tag">{{ . }}</span>
+      {{- end }}
+    </div>
+    {{- with $subtitle }}
+      <p class="hextra-card-subtitle">{{ . }}</p>
+    {{- end }}
+    {{- if $trimmedInner }}
+      <div class="hextra-card-body">{{ $trimmedInner | markdownify }}</div>
+    {{- end }}
+  </div>
+  {{- with $preview }}
+    <div class="hextra-card-preview preview-{{ . }}">
+      {{- if eq . "doc" -}}
+        <div class="mock-doc-window">
+          <div class="mock-doc-topbar">
+            <div class="mock-dots"><span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span></div>
+            <span class="mock-bar-text">Documentation · inybit</span>
+          </div>
+          <div class="mock-doc-body">
+            <div class="mock-doc-sidebar">
+              <div class="mock-item active">Introduction</div>
+              <div class="mock-item">Getting Started</div>
+              <div class="mock-item">Configuration</div>
+            </div>
+            <div class="mock-doc-content">
+              <div class="mock-title">Introduction</div>
+              <div class="mock-callout-bar">Hello! Welcome to inybit.</div>
+              <div class="mock-line-row"><span class="m-line"></span><span class="m-line short"></span></div>
+            </div>
+          </div>
+        </div>
+      {{- else if eq . "code" -}}
+        <div class="mock-code-window">
+          <div class="mock-code-topbar">
+            <span class="mock-file-tag">main.go</span>
+          </div>
+          <div class="mock-code-lines">
+            <span class="c-kw">package</span> main<br>
+            <span class="c-kw">import</span> <span class="c-str">"fmt"</span><br><br>
+            <span class="c-kw">func</span> <span class="c-fn">main</span>() {<br>
+            &nbsp;&nbsp;fmt.<span class="c-fn">Println</span>(<span class="c-str">"Hello, inybit!"</span>)<br>
+            }
+          </div>
+        </div>
+      {{- else if eq . "search" -}}
+        <div class="mock-search-window">
+          <div class="mock-search-topbar">
+            <div class="mock-search-input-pill">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>hello</span>
+            </div>
+          </div>
+          <div class="mock-search-list">
+            <div class="mock-search-item active">
+              <span class="mock-res-cat">DOCUMENTATION</span>
+              <span class="mock-res-title">Documentation</span>
+            </div>
+            <div class="mock-search-item">
+              <span class="mock-res-cat">SYNTAX HIGHLIGHTING</span>
+              <span class="mock-res-title">Syntax Highlighting</span>
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
+  {{- end }}
+  {{- with $image }}
+    <div class="hextra-card-image">
+      <img src="{{ . | relURL }}" alt="{{ $title }}" loading="lazy" />
+    </div>
+  {{- end }}
+</div>
+{{- end -}}

@@ -1,0 +1,27 @@
+{{- $title := .Get "title" | default "文件目录结构" -}}
+{{- $rawText := .Inner | chomp -}}
+<div class="filetree-container filetree-component" data-filetree="interactive">
+  <div class="filetree-header">
+    <div class="filetree-dots" aria-hidden="true">
+      <span class="filetree-dot dot-red"></span>
+      <span class="filetree-dot dot-yellow"></span>
+      <span class="filetree-dot dot-green"></span>
+    </div>
+    <div class="filetree-title">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>{{ $title }}</span>
+    </div>
+    <div class="filetree-actions">
+      <button type="button" class="filetree-toggle-btn filetree-toggle-all" title="展开/折叠全部">
+        <svg class="icon-expand-all" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+        <span>全部展开</span>
+      </button>
+    </div>
+  </div>
+  <div class="filetree-body">
+    <div class="filetree-tree-root filetree-root"></div>
+    <pre class="filetree-raw-source" style="display: none;"><code>{{ $rawText | safeHTML }}</code></pre>
+  </div>
+</div>

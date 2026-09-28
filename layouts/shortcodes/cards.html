@@ -1,0 +1,4 @@
+{{- $cols := .Get "cols" | default "3" -}}
+<div class="hextra-cards-grid cards-grid cols-{{ $cols }}">
+  {{ .Inner | safeHTML }}
+</div>

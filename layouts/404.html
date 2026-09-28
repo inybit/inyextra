@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="content-container">
+  <div class="page-404-wrapper animate-in">
+    <div class="page-404-card">
+      <div class="page-404-badge">404 NOT FOUND</div>
+      <h1 class="page-404-code">404</h1>
+      <h2 class="page-404-title">{{ if eq .Site.Language.Lang "en" }}Lost in the Bitstream{{ else }}页面似乎走丢了{{ end }}</h2>
+      <p class="page-404-desc">
+        {{ if eq .Site.Language.Lang "en" }}
+          The requested page could not be located in cyberspace, not even a tiny bit was found.
+        {{ else }}
+          这个页面似乎在比特世界里走丢了，连一个 tiny bit 都没有留下。
+        {{ end }}
+      </p>
+      <div class="page-404-actions">
+        <a href="{{ .Site.Home.RelPermalink }}" class="btn-primary">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          {{ if eq .Site.Language.Lang "en" }}Return Home{{ else }}回到首页{{ end }}
+        </a>
+        <a href="{{ "/posts/" | relLangURL }}" class="btn-secondary">
+          {{ if eq .Site.Language.Lang "en" }}Explore Posts &rarr;{{ else }}浏览文章 &rarr;{{ end }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

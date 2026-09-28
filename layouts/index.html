@@ -1,0 +1,135 @@
+{{ define "main" }}
+<div class="content-container hextra-home-container">
+  {{/* Hero Section */}}
+  <section class="hero animate-in">
+    <h1 class="hero-title">
+      <span class="highlight">InyBit</span>
+    </h1>
+    <p class="hero-subtitle">
+      {{ if eq .Site.Language.Lang "en" }}Every bit of thoughts &amp; code. Just a tiny bit of my world.{{ else }}{{ with .Site.Params.description }}{{ . }}{{ else }}记录思考与代码的每一个比特，分享世界里的一点一滴。{{ end }}{{ end }}
+    </p>
+    <p class="hero-slogan">Every bit of thoughts &amp; code.</p>
+  </section>
+
+  {{/* Featured Navigation & Services Section (Restored Previous Content with Clean Modern Grid Layout) */}}
+  <section class="services-section animate-in animate-delay-1">
+    <div class="section-header">
+      <div class="section-title-group">
+        <h2 class="section-title">{{ if eq .Site.Language.Lang "en" }}Featured Services &amp; Navigation{{ else }}精选导航与服务{{ end }}</h2>
+        <p class="section-desc">{{ if eq .Site.Language.Lang "en" }}Curated tools, cloud services &amp; personal spaces{{ else }}博文沉淀、生活记录、在线工具箱与状态监控{{ end }}</p>
+      </div>
+    </div>
+    <div class="hextra-cards-grid cards-grid cols-3">
+      {{/* 1. 博客 (Blog Card) */}}
+      <a href="{{ "/posts/" | relLangURL }}" class="hextra-card card-item is-link">
+        <div class="hextra-card-content">
+          <div class="hextra-card-header">
+            <span class="hextra-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </span>
+            <h3 class="hextra-card-title">{{ if eq .Site.Language.Lang "en" }}Blog{{ else }}博客{{ end }}</h3>
+            <span class="hextra-card-tag">{{ if eq .Site.Language.Lang "en" }}Articles{{ else }}文章{{ end }}</span>
+          </div>
+          <p class="hextra-card-subtitle">
+            {{ if eq .Site.Language.Lang "en" }}
+              Deep thoughts, software architecture, programming guides and technical insights recorded bit by bit.
+            {{ else }}
+              沉淀深度思考与技术架构，记录编程实践与探索的每一个比特。
+            {{ end }}
+          </p>
+        </div>
+      </a>
+
+      {{/* 2. 朋友圈 (Moments Card) */}}
+      <a href="{{ "/moments/" | relLangURL }}" class="hextra-card card-item is-link">
+        <div class="hextra-card-content">
+          <div class="hextra-card-header">
+            <span class="hextra-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </span>
+            <h3 class="hextra-card-title">{{ if eq .Site.Language.Lang "en" }}Moments{{ else }}朋友圈{{ end }}</h3>
+            <span class="hextra-card-tag">{{ if eq .Site.Language.Lang "en" }}Life{{ else }}动态{{ end }}</span>
+          </div>
+          <p class="hextra-card-subtitle">
+            {{ if eq .Site.Language.Lang "en" }}
+              WeChat moments style feed, sharing snapshots of life, photos and quick daily updates.
+            {{ else }}
+              微信经典沉浸式动态信息流，记录生活瞬间与日常光影。
+            {{ end }}
+          </p>
+        </div>
+      </a>
+
+      {{/* Dynamic Featured Services Cards from .Site.Params.services */}}
+      {{ with .Site.Params.services }}
+        {{ range . }}
+          {{ $cardTitle := cond (eq $.Site.Language.Lang "en") (.nameEn | default .name) .name }}
+          {{ $cardDesc := cond (eq $.Site.Language.Lang "en") (.descriptionEn | default .description) .description }}
+          {{ $cardCategory := cond (eq $.Site.Language.Lang "en") (.categoryEn | default .category) .category }}
+          {{ $cardBadge := cond (eq $.Site.Language.Lang "en") (.badgeEn | default .badge) .badge }}
+          <a href="{{ .url }}" class="hextra-card card-item is-link"{{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            <div class="hextra-card-content">
+              <div class="hextra-card-header">
+                <span class="hextra-card-icon">
+                  {{ if eq .icon "tool" }}
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                  {{ else if eq .icon "image" }}
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                  {{ else if eq .icon "activity" }}
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  {{ else }}
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  {{ end }}
+                </span>
+                <h3 class="hextra-card-title">{{ $cardTitle }}</h3>
+                {{ with or $cardBadge $cardCategory }}
+                  <span class="hextra-card-tag">{{ . }}</span>
+                {{ end }}
+              </div>
+              <p class="hextra-card-subtitle">{{ $cardDesc }}</p>
+            </div>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* Recent Posts Section */}}
+  {{ $pages := where .Site.RegularPages "Section" "posts" }}
+  {{ if $pages }}
+  <section class="animate-in animate-delay-2">
+    <div class="section-header">
+      <h2 class="section-title">{{ if eq .Site.Language.Lang "en" }}Recent Posts{{ else }}最新文章{{ end }}</h2>
+      <a href="{{ "/posts/" | relLangURL }}" class="section-link">
+        {{ if eq .Site.Language.Lang "en" }}View All &rarr;{{ else }}查看全部 &rarr;{{ end }}
+      </a>
+    </div>
+    <div class="post-list">
+      {{ range first 5 $pages }}
+        <a href="{{ .RelPermalink }}" class="post-card">
+          <div class="post-card-top">
+            <div class="post-card-tags">
+              {{ range first 2 .Params.tags }}
+                <span class="tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          </div>
+          <h3 class="post-card-title">{{ .Title }}</h3>
+          {{ with .Summary }}
+            <p class="post-card-summary">{{ . | plainify | truncate 140 }}</p>
+          {{ end }}
+          <div class="post-card-footer">
+            <span>{{ if .ReadingTime }}{{ .ReadingTime }} {{ if eq $.Site.Language.Lang "en" }}min read{{ else }}分钟阅读{{ end }}{{ end }}</span>
+            <span class="post-card-arrow">
+              {{ if eq $.Site.Language.Lang "en" }}Read article{{ else }}阅读全文{{ end }}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

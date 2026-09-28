@@ -1,0 +1,195 @@
+  display: block;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 0.4rem;
+}
+.toc-content a:hover {
+  color: var(--accent);
+}
+.toc-content a.active {
+  color: var(--accent);
+  font-weight: 600;
+  border-left-color: var(--accent);
+}
+
+/* --- Prev/Next Post Cards --- */
+.post-nav {
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+.post-nav-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+.post-nav-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+.post-nav-dir {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.post-nav-card:hover .post-nav-dir {
+  color: var(--accent);
+}
+.post-nav-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* --- SHORTCODES STYLING --- */
+
+/* 1. Callout */
+.callout {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5em 0;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+.callout-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+.callout-content {
+  flex: 1;
+  min-width: 0;
+}
+.callout-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.callout-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.callout-body p:last-child {
+  margin-bottom: 0;
+}
+
+.callout-note { background: var(--callout-note-bg); border-left-color: var(--callout-note-border); }
+.callout-note .callout-icon, .callout-note .callout-title { color: var(--callout-note-border); }
+
+.callout-info { background: var(--callout-info-bg); border-left-color: var(--callout-info-border); }
+.callout-info .callout-icon, .callout-info .callout-title { color: var(--callout-info-border); }
+
+.callout-tip { background: var(--callout-tip-bg); border-left-color: var(--callout-tip-border); }
+.callout-tip .callout-icon, .callout-tip .callout-title { color: var(--callout-tip-border); }
+
+.callout-warning { background: var(--callout-warning-bg); border-left-color: var(--callout-warning-border); }
+.callout-warning .callout-icon, .callout-warning .callout-title { color: var(--callout-warning-border); }
+
+.callout-danger, .callout-error { background: var(--callout-danger-bg); border-left-color: var(--callout-danger-border); }
+.callout-danger .callout-icon, .callout-danger .callout-title,
+.callout-error .callout-icon, .callout-error .callout-title { color: var(--callout-danger-border); }
+
+/* 2. Tabs */
+.tabs-wrapper {
+  margin: 1.75em 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.tabs-header {
+  display: flex;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0 0.5rem;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.65rem 1rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+.tabs-body {
+  padding: 1.25rem;
+}
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+  animation: fadeIn var(--transition-fast);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 3. Steps */
+.steps-wrapper {
+  margin: 1.75em 0;
+  padding-left: 1.75rem;
+  border-left: 2px solid var(--border);
+  counter-reset: step-counter;
+}
+.steps-wrapper > h3,
+.steps-wrapper > h4 {
+  position: relative;
+  counter-increment: step-counter;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.steps-wrapper > h3::before,
+.steps-wrapper > h4::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: calc(-1.75rem - 13px);
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--bg-primary);
+}
+

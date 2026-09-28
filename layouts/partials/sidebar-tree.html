@@ -1,0 +1,72 @@
+{{/* Left Sidebar Tree Navigation for Blog (Posts) Section */}}
+{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+<aside id="blog-sidebar-tree" class="blog-sidebar-tree" aria-label="{{ if eq .Site.Language.Lang "en" }}Blog Navigation Tree{{ else }}博客文章导航树{{ end }}">
+  <div class="sidebar-tree-header">
+    <div class="sidebar-tree-title">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>{{ if eq .Site.Language.Lang "en" }}Blog Library{{ else }}博客文件树{{ end }}</span>
+    </div>
+    <span class="sidebar-tree-badge">{{ len $posts }}</span>
+  </div>
+
+  <div class="sidebar-tree-content">
+    {{/* Group by Year */}}
+    {{ range $posts.GroupByDate "2006" }}
+      <div class="tree-group open">
+        <div class="tree-folder-title">
+          <svg class="tree-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="tree-folder-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span class="folder-name">{{ .Key }} 年</span>
+          <span class="folder-count">({{ len .Pages }})</span>
+        </div>
+        <ul class="tree-file-list">
+          {{ range .Pages }}
+            {{ $isCurrent := eq $.RelPermalink .RelPermalink }}
+            <li class="tree-file-item{{ if $isCurrent }} active{{ end }}">
+              <a href="{{ .RelPermalink }}" class="tree-file-link" title="{{ .Title }}">
+                <svg class="tree-file-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span class="tree-file-title">{{ .Title }}</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{/* Sidebar Tags Section (Requirement 5) */}}
+    {{- with .Site.Taxonomies.tags -}}
+      <div class="sidebar-tree-tags-section">
+        <div class="sidebar-tags-header">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+          </svg>
+          <span>{{ if eq $.Site.Language.Lang "en" }}Tags Cloud{{ else }}文章标签{{ end }}</span>
+          <span class="sidebar-tags-badge">{{ len . }}</span>
+        </div>
+        <div class="sidebar-tags-cloud">
+          {{- range $name, $taxonomy := . -}}
+            <a href="{{ printf "/tags/%s/" ($name | urlize) | relLangURL }}" class="sidebar-tag-item" title="{{ $name }} ({{ $taxonomy.Count }})">
+              <span class="sidebar-tag-hash">#</span>
+              <span class="sidebar-tag-name">{{ $name }}</span>
+              <span class="sidebar-tag-count">{{ $taxonomy.Count }}</span>
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+  </div>
+
+  {{/* Sidebar Footer Links */}}
+  <div class="sidebar-tree-footer">
+    <a href="{{ "/archives/" | relLangURL }}" class="sidebar-footer-link">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect width="22" height="5" x="1" y="3" rx="1"></rect><line x1="10" x2="14" y1="12" y2="12"></line></svg>
+      <span>{{ if eq .Site.Language.Lang "en" }}Timeline Archives{{ else }}时间线归档{{ end }} &rarr;</span>
+    </a>
+  </div>
+</aside>

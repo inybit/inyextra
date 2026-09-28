@@ -1,0 +1,82 @@
+{{ define "main" }}
+<div class="content-container">
+  {{ if eq .Kind "taxonomy" }}
+    {{/* When visiting /tags/, render as tag pills cloud */}}
+    <div class="page-header animate-in">
+      <div class="page-tag-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"></path>
+          <path d="M7 7h.01"></path>
+        </svg>
+      </div>
+      <h1 class="page-title">{{ if eq .Site.Language.Lang "en" }}Tags Cloud{{ else }}标签漫游{{ end }}</h1>
+      {{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+      <p class="page-subtitle">
+        {{ if eq .Site.Language.Lang "en" }}
+          Explore all <strong>{{ len .Data.Terms }}</strong> tags across <strong>{{ len $allPosts }}</strong> articles.
+        {{ else }}
+          全站共精选 <strong>{{ len .Data.Terms }}</strong> 个技术与生活标签，漫游探索 <strong>{{ len $allPosts }}</strong> 篇精彩博文。
+        {{ end }}
+      </p>
+    </div>
+
+    <div class="tag-cloud-container animate-in animate-delay-1">
+      <div class="tag-cloud-wrapper">
+        {{ range .Data.Terms.ByCount }}
+          <a href="{{ .Page.RelPermalink }}" class="tag-pill-badge" data-count="{{ .Count }}">
+            <span class="tag-pill-hash">#</span>
+            <span class="tag-pill-name">{{ .Page.Title }}</span>
+            <span class="tag-pill-count">{{ .Count }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  {{ else }}
+    {{/* When visiting /tags/<tag>/ */}}
+    <div class="page-header animate-in">
+      <div class="breadcrumb-nav">
+        <a href="{{ "/tags/" | relLangURL }}" class="back-to-tags-link">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          <span>{{ if eq .Site.Language.Lang "en" }}All Tags{{ else }}全部标签{{ end }}</span>
+        </a>
+      </div>
+      <h1 class="page-title">
+        <span class="tag-hash-symbol">#</span> {{ .Title }}
+      </h1>
+      <p class="page-subtitle">
+        {{ if eq .Site.Language.Lang "en" }}
+          A collection of <strong>{{ len .Pages }}</strong> articles tagged with &ldquo;{{ .Title }}&rdquo;.
+        {{ else }}
+          标签归档 · 共收录 <strong>{{ len .Pages }}</strong> 篇标有「{{ .Title }}」的精彩文章。
+        {{ end }}
+      </p>
+    </div>
+
+    <div class="post-list animate-in animate-delay-1">
+      {{ range .Pages }}
+        <a href="{{ .RelPermalink }}" class="post-card">
+          <div class="post-card-top">
+            <div class="post-card-tags">
+              {{ range first 2 .Params.tags }}
+                <span class="tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          </div>
+          <h3 class="post-card-title">{{ .Title }}</h3>
+          {{ with .Summary }}
+            <p class="post-card-summary">{{ . | plainify | truncate 140 }}</p>
+          {{ end }}
+          <div class="post-card-footer">
+            <span>{{ if .ReadingTime }}{{ .ReadingTime }} {{ if eq $.Site.Language.Lang "en" }}min read{{ else }}分钟阅读{{ end }}{{ end }}</span>
+            <span class="post-card-arrow">
+              {{ if eq $.Site.Language.Lang "en" }}Read article{{ else }}阅读全文{{ end }}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+{{ end }}

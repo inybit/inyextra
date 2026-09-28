@@ -1,0 +1,160 @@
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Comprehensive Artalk Theme Overrides */
+.artalk {
+  --at-color-primary: #EA580C !important;
+  --at-color-main: #EA580C !important;
+  --at-color-bg: var(--bg-card) !important;
+  --at-color-font: var(--text-primary) !important;
+  --at-color-sub: var(--text-muted) !important;
+  --at-color-border: var(--border-light) !important;
+  font-family: var(--font-body) !important;
+}
+
+.artalk .atk-main-editor {
+  border-radius: var(--radius-lg) !important;
+  border-color: var(--border-light) !important;
+  background: var(--bg-card) !important;
+}
+
+.artalk .atk-send-btn {
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Moments quick comment drawer */
+.moment-artalk-drawer {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--border-light);
+  animation: drawerFadeIn 0.2s ease;
+}
+
+@keyframes drawerFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moment-quick-comment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.moment-nick-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #576B95;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+[data-theme="dark"] .moment-nick-tag {
+  color: #7D9DC9;
+}
+.moment-nick-tag:hover {
+  background: var(--border-light);
+}
+
+.moment-comment-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.moment-comment-input:focus {
+  border-color: #EA580C;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.15);
+}
+
+.moment-comment-submit-btn {
+  background: #576B95;
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+.moment-comment-submit-btn:hover {
+  background: #415277;
+}
+
+.moment-comment-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+.moment-comment-cancel-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+/* Artalk Local Diagnostic Banner */
+.artalk-cors-tip-card {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(234, 88, 12, 0.08);
+  border-left: 3px solid #EA580C;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: 1.45;
+}
+.artalk-cors-tip-card .tip-badge {
+  background: #EA580C;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Custom Cover & Avatar */
+.moments-cover-bg.has-custom-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.avatar-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+

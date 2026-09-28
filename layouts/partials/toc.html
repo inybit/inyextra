@@ -1,0 +1,13 @@
+{{- if and .Site.Params.toc (gt (len .TableOfContents) 35) -}}
+<aside class="toc-sidebar" aria-label="{{ if eq .Site.Language.Lang "en" }}Table of Contents{{ else }}目录导航{{ end }}">
+  <div class="toc-card">
+    <div class="toc-header">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <span>{{ if eq .Site.Language.Lang "en" }}On This Page{{ else }}目录导航{{ end }}</span>
+    </div>
+    <div class="toc-content">
+      {{ .TableOfContents }}
+    </div>
+  </div>
+</aside>
+{{- end -}}

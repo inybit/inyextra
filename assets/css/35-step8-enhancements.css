@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Step 8 Enhancements: TOC follow, Hide Notification Center, Horizontal Sort,
+   Theme-aligned Moments Popover, Left-aligned Comments
+   ========================================================================== */
+
+/* 2. TOC Reading Follow Active State */
+.toc-content a,
+#TableOfContents a,
+.toc-sidebar a {
+  display: block;
+  padding: 4px 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border-radius: 4px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.toc-content a:hover,
+#TableOfContents a:hover,
+.toc-sidebar a:hover {
+  color: var(--primary, #3b82f6);
+  background: var(--bg-secondary);
+}
+
+.toc-content a.active,
+#TableOfContents a.active,
+.toc-sidebar a.active {
+  color: var(--primary, #3b82f6) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--primary, #3b82f6) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* 3. Remove Notification Center Function */
+[data-action="open-sidebar"],
+.atk-right-action [data-action="open-sidebar"],
+.atk-btn-notify,
+.atk-sidebar-layer,
+.atk-unread-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 5. Comment Sorting: Cancel dropdown, Horizontal Right-Aligned */
+.artalk > .atk-list > .atk-list-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 0 16px 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 16px !important;
+  position: relative !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-comment-count {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  color: var(--text-primary) !important;
+  cursor: default !important;
+}
+
+.artalk > .atk-list > .atk-list-header .atk-arrow-down-icon {
+  display: none !important;
+}
+
+/* Old horizontal sort tabs removed */
+
+/* 7. WeChat Moments '..' Popover Theme-Consistent UI */
+.moment-action-popover {
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  transform-origin: right center;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 3px 6px !important;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  width: max-content !important;
+  white-space: nowrap !important;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moment-action-popover.is-active,
+.moment-action-popover.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.popover-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.popover-btn:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--primary, #3b82f6) !important;
+}
+
+.popover-btn .heart-icon-btn {
+  color: #ef4444 !important;
+}
+
+.popover-btn .comment-icon-btn {
+  color: var(--primary, #3b82f6) !important;
+}
+
+.popover-divider {
+  width: 1px !important;
+  height: 16px !important;
+  background: var(--border-color) !important;
+  margin: 0 2px !important;
+}
+
+/* 8. Fix Left Alignment of WeChat Comments */
+.moment-comment-item {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  text-align: left !important;
+}
+
+.moment-comment-text-wrap {
+  flex: 1 !important;
+  min-width: 0 !important;
+  text-align: left !important;
+  word-break: break-word !important;
+}
+
+.moment-comment-text-wrap .comment-author {
+  color: #576b95 !important;
+  font-weight: 600 !important;
+  margin-right: 4px !important;
+}
+
+html[data-theme="dark"] .moment-comment-text-wrap .comment-author {
+  color: #7b9fe0 !important;
+}
+
+.moment-comment-text-wrap .comment-text {
+  color: var(--text-primary) !important;
+  text-align: left !important;
+}
+
+

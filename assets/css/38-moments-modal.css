@@ -1,0 +1,193 @@
+/* ==========================================================================
+   WeChat Moments Nickname & Email Requirement + User Modal Styles
+   ========================================================================== */
+
+/* Redundant wrapper rules removed */
+
+/* User Info Modal for Liking & Comments */
+.moment-user-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.moment-user-modal.is-open {
+  display: flex !important;
+}
+
+.moment-modal-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(15, 23, 42, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+  animation: modalFadeIn 0.2s ease !important;
+}
+
+.moment-modal-dialog {
+  position: relative !important;
+  width: 90% !important;
+  max-width: 390px !important;
+  background: var(--bg-card, #ffffff) !important;
+  border: 1px solid var(--border-color, #e2e8f0) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+  padding: 20px 24px !important;
+  z-index: 1 !important;
+  animation: modalScaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.moment-modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 8px !important;
+}
+
+.moment-modal-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+}
+
+.moment-modal-title .heart-icon {
+  color: #ef4444 !important;
+}
+
+.moment-modal-close {
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.4rem !important;
+  line-height: 1 !important;
+  color: var(--text-muted, #94a3b8) !important;
+  cursor: pointer !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.moment-modal-close:hover {
+  color: var(--text-primary) !important;
+  background: var(--bg-secondary) !important;
+}
+
+.moment-modal-desc {
+  font-size: 0.83rem !important;
+  color: var(--text-secondary) !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.45 !important;
+}
+
+.moment-modal-field {
+  margin-bottom: 14px !important;
+}
+
+.moment-modal-field label {
+  display: block !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 5px !important;
+}
+
+.moment-modal-field label .required {
+  color: #ef4444 !important;
+}
+
+.moment-modal-field input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 8px 12px !important;
+  background: var(--bg-secondary, #f8fafc) !important;
+  border: 1px solid var(--border-color, #e2e8f0) !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.moment-modal-field input:focus {
+  background: var(--bg-card, #ffffff) !important;
+  border-color: var(--primary, #3b82f6) !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15) !important;
+}
+
+.moment-modal-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  margin-top: 20px !important;
+}
+
+.moment-modal-btn {
+  padding: 7px 16px !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.moment-modal-btn.btn-cancel {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+.moment-modal-btn.btn-cancel:hover {
+  background: var(--bg-tertiary, #e2e8f0) !important;
+  color: var(--text-primary) !important;
+}
+
+.moment-modal-btn.btn-confirm {
+  background: var(--primary, #3b82f6) !important;
+  border: 1px solid var(--primary, #3b82f6) !important;
+  color: #ffffff !important;
+}
+
+.moment-modal-btn.btn-confirm:hover {
+  background: var(--primary-hover, #2563eb) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Dark mode overrides */
+html[data-theme="dark"] .moment-modal-dialog {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] .moment-modal-field input,
+html[data-theme="dark"] .moment-comment-form .moment-input-nick,
+html[data-theme="dark"] .moment-comment-form .moment-input-email,
+html[data-theme="dark"] .moment-comment-form .moment-input-text {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .moment-modal-field input:focus,
+html[data-theme="dark"] .moment-comment-form .moment-input-nick:focus,
+html[data-theme="dark"] .moment-comment-form .moment-input-email:focus,
+html[data-theme="dark"] .moment-comment-form .moment-input-text:focus {
+  background: #1e293b !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25) !important;
+}

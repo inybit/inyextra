@@ -1,0 +1,285 @@
+/* ===================================================
+   WeChat Moments Style Page (.moments-page-container)
+   =================================================== */
+.moments-page-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.moments-header-section {
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.moments-cover-wrapper {
+  position: relative;
+  height: 240px;
+  border-radius: 0 0 1.25rem 1.25rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%);
+}
+
+.moments-cover-bg {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(234, 88, 12, 0.4) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.35) 0%, transparent 60%);
+  background-size: cover;
+}
+
+.moments-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+}
+
+.moments-profile-bar {
+  position: absolute;
+  bottom: -2rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.moments-user-info {
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.moments-nickname {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.2rem;
+}
+
+.moments-motto {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+}
+
+.moments-avatar-box {
+  width: 74px;
+  height: 74px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+[data-theme="dark"] .moments-avatar-box {
+  background: #27272A;
+  border-color: #27272A;
+}
+
+.moments-avatar-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 50%, #0EA5E9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+.moments-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.moment-card {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.moment-left {
+  flex-shrink: 0;
+}
+
+.moment-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #EA580C, #0EA5E9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.moment-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.moment-author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #576B95; /* Classic WeChat moments name blue */
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="dark"] .moment-author-name {
+  color: #7D9DC9;
+}
+
+.moment-body-content {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.moment-body-content p {
+  margin-bottom: 0.5rem;
+}
+
+.moment-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: #576B95;
+  margin-bottom: 0.5rem;
+}
+[data-theme="dark"] .moment-location {
+  color: #7D9DC9;
+}
+
+.moment-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.moment-timestamp {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.moment-action-wrapper {
+  position: relative;
+}
+
+.moment-action-trigger {
+  width: 32px;
+  height: 20px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.moment-action-trigger .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #576B95;
+}
+[data-theme="dark"] .moment-action-trigger .dot {
+  background: #7D9DC9;
+}
+.moment-action-trigger:hover {
+  background: var(--bg-tertiary);
+}
+
+.moment-action-popover {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.85);
+  transform-origin: right center;
+  background: #242426;
+  border-radius: 6px;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 0.25rem 0.5rem !important;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  width: max-content !important;
+  min-width: 0 !important;
+  width: auto !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moment-action-popover.is-active,
+.moment-action-popover.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.popover-btn {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  background: none !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.65rem !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: background var(--transition-fast) !important;
+}
+
+.popover-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.popover-btn.like-btn.liked .heart-icon-btn {
+  fill: #EA580C;
+  stroke: #EA580C;
+  animation: heartBeat 0.35s ease;
+}
+
+.popover-btn.like-btn.liked {
+  color: #FDBA74 !important;
+}
+
+.popover-divider {
+  width: 1px !important;
+  height: 16px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  margin: 0 0.15rem !important;
+  flex-shrink: 0 !important;
+}
+
+.moment-interactions-box {
+  margin-top: 0.65rem;
+  background: var(--bg-secondary);
+  border-radius: 6px;

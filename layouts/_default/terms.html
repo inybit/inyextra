@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="content-container">
+  <div class="page-header animate-in">
+    <div class="page-tag-icon">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"></path>
+        <path d="M7 7h.01"></path>
+      </svg>
+    </div>
+    <h1 class="page-title">{{ if eq .Site.Language.Lang "en" }}Tags Cloud{{ else }}标签漫游{{ end }}</h1>
+    {{/* Calculate total posts count */}}
+    {{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+    <p class="page-subtitle">
+      {{ if eq .Site.Language.Lang "en" }}
+        Explore all <strong>{{ len .Data.Terms }}</strong> tags across <strong>{{ len $allPosts }}</strong> articles.
+      {{ else }}
+        全站共精选 <strong>{{ len .Data.Terms }}</strong> 个技术与生活标签，漫游探索 <strong>{{ len $allPosts }}</strong> 篇精彩博文。
+      {{ end }}
+    </p>
+  </div>
+
+  {{/* Interactive Tag Cloud (Requirement 6: Display as Tags instead of Cards) */}}
+  <div class="tag-cloud-container animate-in animate-delay-1">
+    <div class="tag-cloud-wrapper">
+      {{ range .Data.Terms.ByCount }}
+        <a href="{{ .Page.RelPermalink }}" class="tag-pill-badge" data-count="{{ .Count }}" title="{{ .Page.Title }} ({{ .Count }})">
+          <span class="tag-pill-hash">#</span>
+          <span class="tag-pill-name">{{ .Page.Title }}</span>
+          <span class="tag-pill-count">{{ .Count }}</span>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

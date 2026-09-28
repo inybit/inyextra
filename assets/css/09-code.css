@@ -1,0 +1,104 @@
+/* =================================================================
+   CODE BLOCKS (Nextra / Hextra Style) — RESOLVING BLACK ON BLACK
+   ================================================================= */
+.code-block {
+  position: relative;
+  margin: 1.75em 0;
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  background-color: var(--code-bg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: border-color var(--transition-fast);
+}
+.code-block:hover {
+  border-color: var(--accent);
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.85rem;
+  background-color: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-border);
+  user-select: none;
+}
+
+.code-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.code-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.85;
+}
+
+.code-lang {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.copy-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+.copy-btn.copied {
+  color: #059669;
+  border-color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Hugo Chroma Highlight Container inside Code Block */
+.code-block .highlight {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+.code-block pre.chroma {
+  margin: 0 !important;
+  padding: 1rem 1.15rem !important;
+  background-color: var(--code-bg) !important;
+  color: var(--code-text) !important;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  overflow-x: auto;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.code-block pre.chroma code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+

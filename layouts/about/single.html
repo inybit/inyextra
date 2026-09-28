@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="about-page-wrapper">
+  <div class="about-container">
+    {{/* Breadcrumbs */}}
+    <div class="about-breadcrumbs-wrap">
+      {{ partial "breadcrumbs.html" . }}
+    </div>
+
+    <article class="about-card animate-in">
+      <header class="about-header">
+        <h1 class="about-title">{{ .Title }}</h1>
+        {{ with .Description }}
+          <p class="about-desc">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      <div class="content about-content">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</div>
+{{ end }}

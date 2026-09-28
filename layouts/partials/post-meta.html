@@ -1,0 +1,29 @@
+<div class="post-meta">
+  {{/* Date */}}
+  <time datetime="{{ .Date.Format "2006-01-02" }}">
+    {{ .Date.Format "2006-01-02" }}
+  </time>
+
+  {{/* Reading Time */}}
+  {{ if .ReadingTime }}
+    <span class="separator">·</span>
+    <span>{{ .ReadingTime }} {{ if eq .Site.Language.Lang "en" }}min read{{ else }}分钟阅读{{ end }}</span>
+  {{ end }}
+
+  {{/* Page Views (点击量 / PV) */}}
+  {{ if eq .Section "posts" }}
+    <span class="separator">·</span>
+    <span class="post-pv-item" title="{{ if eq .Site.Language.Lang "en" }}Page Views{{ else }}点击阅读量{{ end }}">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -1px; margin-right: 3px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      <span id="artalk_pv">...</span> {{ if eq .Site.Language.Lang "en" }}views{{ else }}次阅读{{ end }}
+    </span>
+  {{ end }}
+
+  {{/* Tags */}}
+  {{ with .Params.tags }}
+    <span class="separator">·</span>
+    {{ range . }}
+      <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+</div>

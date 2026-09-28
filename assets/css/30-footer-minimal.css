@@ -1,0 +1,169 @@
+/* ===================================================
+   Clean Unboxed Minimal Footer (No Capsules, Flat & Elegant)
+   =================================================== */
+.minimal-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 3rem 0 2.5rem 0;
+  margin-top: 4.5rem;
+  background: transparent;
+}
+
+.minimal-footer .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+}
+
+.footer-meta-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer-meta-bar .meta-icon {
+  margin-right: 0.25rem;
+  vertical-align: middle;
+  color: var(--text-muted);
+}
+
+.footer-lang-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-lang-minimal .lang-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.footer-lang-minimal .lang-link:hover,
+.footer-lang-minimal .lang-link.is-active {
+  color: #EA580C;
+  font-weight: 600;
+}
+
+.footer-meta-bar .sep {
+  color: var(--border-light);
+  user-select: none;
+}
+
+.footer-meta-bar .meta-divider {
+  color: var(--border-light);
+  margin: 0 0.4rem;
+  user-select: none;
+}
+
+.footer-theme-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-theme-minimal .theme-label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.theme-flat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  padding: 0.15rem 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.theme-flat-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+.theme-flat-btn.is-active {
+  color: #EA580C;
+  font-weight: 600;
+  background: rgba(234, 88, 12, 0.08);
+}
+
+.footer-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.footer-nav-links a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-nav-links a:hover {
+  color: #EA580C;
+}
+
+.footer-copyright-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-copyright-row a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-copyright-row a:hover {
+  color: #EA580C;
+}
+
+/* Code Copy Button Active Polish */
+.code-block .copy-btn {
+  cursor: pointer;
+  user-select: none;
+}
+.code-block .copy-btn.copied {
+  color: #10B981 !important;
+  border-color: #10B981 !important;
+}
+.code-block .copy-btn.copied svg {
+  stroke: #10B981 !important;
+}
+
+/* Moments Artalk Live Box */
+.moment-artalk-box {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--border-light);
+  animation: drawerFadeIn 0.2s ease;
+}
+
+.artalk-likes-badge {
+  font-size: 0.75rem;
+  color: #EA580C;
+  font-weight: 600;
+  display: none;
+}
+

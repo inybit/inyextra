@@ -1,0 +1,18 @@
+{{- $pages := where site.RegularPages "Type" "in" (slice "posts" "post" "blog") | default site.RegularPages -}}
+[
+  {{- $first := true -}}
+  {{- range $pages -}}
+    {{- if not .Params.private -}}
+      {{- if not $first }},{{ end -}}
+      {{- $first = false -}}
+      {
+        "title": {{ .Title | jsonify }},
+        "permalink": {{ .RelPermalink | jsonify }},
+        "date": {{ .Date.Format "2006-01-02" | jsonify }},
+        "summary": {{ .Summary | plainify | htmlUnescape | truncate 150 | jsonify }},
+        "content": {{ .Plain | htmlUnescape | jsonify }},
+        "tags": {{ or .Params.tags (slice) | jsonify }}
+      }
+    {{- end -}}
+  {{- end -}}
+]

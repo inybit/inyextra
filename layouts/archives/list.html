@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="content-container">
+  {{ partial "breadcrumbs.html" . }}
+
+  <div class="archive-page-header animate-in">
+    <div class="archive-header-badge">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect width="22" height="5" x="1" y="3" rx="1"></rect><line x1="10" x2="14" y1="12" y2="12"></line></svg>
+      <span>{{ if eq .Site.Language.Lang "en" }}Timeline Archive{{ else }}时间线归档{{ end }}</span>
+    </div>
+    <h1 class="page-title">{{ if eq .Site.Language.Lang "en" }}Archives{{ else }}文章归档{{ end }}</h1>
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    <p class="archive-page-subtitle">
+      {{ if eq .Site.Language.Lang "en" }}
+        A total of <strong>{{ len $posts }}</strong> articles preserved across time.
+      {{ else }}
+        共收录 <strong>{{ len $posts }}</strong> 篇思考与技术博文，岁月流淌，比特成诗。
+      {{ end }}
+    </p>
+  </div>
+
+  <div class="archive-timeline-wrapper animate-in animate-delay-1">
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ range $posts.GroupByDate "2006" }}
+      <div class="archive-year-group">
+        <div class="archive-year-badge">
+          <span class="archive-year-dot"></span>
+          <span class="archive-year-text">{{ .Key }}</span>
+          <span class="archive-year-total">{{ len .Pages }} {{ if eq $.Site.Language.Lang "en" }}posts{{ else }}篇{{ end }}</span>
+        </div>
+
+        <ul class="archive-entry-list">
+          {{ range .Pages }}
+            <li class="archive-entry-item">
+              <span class="archive-entry-dot"></span>
+              <time class="archive-entry-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+              <div class="archive-entry-content">
+                <a href="{{ .RelPermalink }}" class="archive-entry-title">{{ .Title }}</a>
+                {{ with .Params.tags }}
+                  <span class="archive-entry-tags">
+                    {{ range . }}
+                      <span class="tag">{{ . }}</span>
+                    {{ end }}
+                  </span>
+                {{ end }}
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

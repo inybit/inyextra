@@ -1,0 +1,42 @@
+/* =================================================================
+   HERO SECTION (Homepage inybit Branding)
+   ================================================================= */
+.hero {
+  text-align: center;
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 8vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--accent) 0%, #F59E0B 45%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  filter: drop-shadow(0 2px 14px var(--accent-glow));
+}
+
+.hero-subtitle {
+  font-size: 1.18rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 620px;
+  margin: 0 auto var(--spacing-sm);
+}
+
+.hero-slogan {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+

@@ -1,0 +1,201 @@
+{{ define "main" }}
+<div class="moments-page-container"
+     data-artalk-server="{{ .Site.Params.artalk.server | default "" }}"
+     data-artalk-site="{{ .Site.Params.artalk.site | default .Site.Title }}"
+     data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}"
+     data-gravatar-default="{{ .Site.Params.artalk.gravatarDefault | default "identicon" }}">
+  {{/* Artalk v2.10.0 CSS & JS for Moments */}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.js"></script>
+
+  {{/* WeChat Moments Cover Banner */}}
+  {{ $coverImg := .Params.cover }}
+  {{ if not $coverImg }}
+    {{ with .Site.Params.moments }}
+      {{ $coverImg = .cover }}
+    {{ end }}
+  {{ end }}
+
+  {{ $avatarImg := .Params.avatar }}
+  {{ if not $avatarImg }}
+    {{ with .Site.Params.moments }}
+      {{ $avatarImg = .avatar }}
+    {{ end }}
+  {{ end }}
+
+  <div class="moments-header-section">
+    <div class="moments-cover-wrapper">
+      <div class="moments-cover-bg{{ if $coverImg }} has-custom-cover{{ end }}"{{ if $coverImg }} style="background-image: url('{{ $coverImg | relURL }}');"{{ end }}></div>
+      <div class="moments-cover-overlay"></div>
+    </div>
+    <div class="moments-profile-bar">
+      <div class="moments-user-info">
+        <h1 class="moments-nickname">{{ .Site.Title }}</h1>
+        <p class="moments-motto">{{ if eq .Site.Language.Lang "en" }}Every bit of thoughts &amp; code. Just a tiny bit of my world.{{ else }}记录思考与代码的每一个比特，分享世界里的一点一滴。{{ end }}</p>
+      </div>
+      <div class="moments-avatar-box">
+        <div class="moments-avatar-img">
+          {{ if $avatarImg }}
+            <img src="{{ $avatarImg | relURL }}" alt="{{ .Site.Title }}" class="avatar-photo-img" />
+          {{ else }}
+            <span class="avatar-letter">I</span>
+          {{ end }}
+          <span class="avatar-pulse"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* Moments Feed */}}
+  <div class="moments-feed-wrapper">
+    {{ $moments := where .Site.RegularPages "Section" "moments" }}
+    {{ if $moments }}
+      <div class="moments-feed-list">
+        {{ range $moments }}
+          {{ $momentAvatar := .Params.avatar | default $avatarImg }}
+          {{ $momentId := .File.TranslationBaseName }}
+          {{ $pageKey := .RelPermalink }}
+          {{ $likes := .Params.likes }}
+          {{ $comments := .Params.comments }}
+          <article class="moment-card" id="moment-{{ $momentId }}" data-moment-id="{{ $momentId }}" data-page-key="{{ $pageKey }}" data-page-url="{{ .Permalink }}" data-moment-title="{{ .Title | default (printf "Moment %s" $momentId) }}">
+            <div class="moment-left">
+              <div class="moment-avatar">
+                {{ if $momentAvatar }}
+                  <img src="{{ $momentAvatar | relURL }}" alt="{{ .Params.author | default $.Site.Title }}" class="avatar-photo-img" />
+                {{ else }}
+                  <span class="avatar-letter">I</span>
+                {{ end }}
+              </div>
+            </div>
+            <div class="moment-right">
+              <div class="moment-author-name">{{ .Params.author | default $.Site.Title }}</div>
+              
+              <div class="moment-body-content">
+                {{ .Content }}
+              </div>
+
+              {{/* Images Grid */}}
+              {{ with .Params.images }}
+                {{ $count := len . }}
+                <div class="moment-images-grid count-{{ $count }}">
+                  {{ range . }}
+                    <div class="moment-img-cell">
+                      <img src="{{ . | relURL }}" alt="Moment Photo" loading="lazy" />
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+
+              {{/* Location Badge */}}
+              {{ with .Params.location }}
+                <div class="moment-location">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <span>{{ . }}</span>
+                </div>
+              {{ end }}
+
+              {{/* Bottom Meta & Interactive Action */}}
+              <div class="moment-meta-row">
+                <time class="moment-timestamp" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                  {{ .Date.Format "2006-01-02 15:04" }}
+                </time>
+
+                <div class="moment-action-wrapper">
+                  <button type="button" class="moment-action-trigger" aria-label="{{ if eq $.Site.Language.Lang "en" }}Actions{{ else }}操作菜单{{ end }}" title="{{ if eq $.Site.Language.Lang "en" }}Like / Comment{{ else }}点赞 / 评论{{ end }}">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </button>
+                  <div class="moment-action-popover" role="tooltip">
+                    <button type="button" class="popover-btn like-btn" data-moment-id="{{ $momentId }}">
+                      <svg class="heart-icon-btn" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                      <span class="like-btn-label">{{ if eq $.Site.Language.Lang "en" }}Like{{ else }}赞{{ end }}</span>
+                    </button>
+                    <div class="popover-divider"></div>
+                    <button type="button" class="popover-btn comment-btn" data-moment-id="{{ $momentId }}">
+                      <svg class="comment-icon-btn" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                      <span class="comment-btn-label">{{ if eq $.Site.Language.Lang "en" }}Comment{{ else }}评论{{ end }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {{/* Likes & Comments Interactions Box (WeChat Style & Artalk API Parsed) */}}
+              <div class="moment-interactions-box" id="interactions-{{ $momentId }}"
+                   data-moment-id="{{ $momentId }}"
+                   data-page-key="{{ $pageKey }}"
+                   data-page-url="{{ .Permalink }}"
+                   data-moment-title="{{ .Title | default (printf "Moment %s" $momentId) }}">
+                
+                {{/* WeChat-style Likes Row */}}
+                <div class="moment-likes-row" id="likes-row-{{ $momentId }}" {{ if not $likes }}style="display: none;"{{ end }}>
+                  <svg class="heart-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                  <span class="likes-names" id="likes-names-{{ $momentId }}" data-default-likes="{{ if $likes }}{{ delimit $likes "," }}{{ end }}">{{ if $likes }}{{ delimit $likes "，" }}{{ end }}</span>
+                </div>
+
+                {{/* WeChat-style Comments List */}}
+                <div class="moment-comments-list" id="comments-list-{{ $momentId }}" {{ if not $comments }}style="display: none;"{{ end }}>
+                  {{ with $comments }}
+                    {{ range . }}
+                      <div class="moment-comment-item initial-comment">
+                        <div class="moment-comment-text-wrap">
+                          <span class="comment-author">{{ .user }}:</span>
+                          <span class="comment-text">{{ .text }}</span>
+                        </div>
+                      </div>
+                    {{ end }}
+                  {{ end }}
+                </div>
+
+                {{/* WeChat-style Inline Comment Input Bar */}}
+                <div class="moment-comment-bar" id="comment-bar-{{ $momentId }}" style="display: none;">
+                  <form class="moment-comment-form" onsubmit="return false;">
+                    <input type="text" class="moment-input-nick" placeholder="{{ if eq $.Site.Language.Lang "en" }}Nickname *{{ else }}昵称 *{{ end }}" maxlength="20" required />
+                    <input type="email" class="moment-input-email" placeholder="{{ if eq $.Site.Language.Lang "en" }}Email * (private){{ else }}邮箱 * (保密){{ end }}" maxlength="50" required />
+                    <input type="text" class="moment-input-text" placeholder="{{ if eq $.Site.Language.Lang "en" }}Comment... (文明你我他){{ else }}评论... (文明你我他){{ end }}" maxlength="300" required />
+                    <button type="submit" class="moment-btn-send">{{ if eq $.Site.Language.Lang "en" }}Send{{ else }}发送{{ end }}</button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <div class="moments-empty-state">
+        <p>{{ if eq .Site.Language.Lang "en" }}No moments yet. Every tiny bit of life is worth remembering.{{ else }}朋友圈暂未发布动态，每一刻生活都值得被记录。{{ end }}</p>
+      </div>
+    {{ end }}
+  </div>
+  {{/* Modal Dialog for Liking & Comments (Requires Nickname and Email) */}}
+  <div id="moment-user-modal" class="moment-user-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="moment-modal-title">
+    <div class="moment-modal-backdrop"></div>
+    <div class="moment-modal-dialog">
+      <div class="moment-modal-header">
+        <div class="moment-modal-title" id="moment-modal-title">
+          <svg class="heart-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+          <span>{{ if eq .Site.Language.Lang "en" }}Interact &amp; Like{{ else }}点赞互动{{ end }}</span>
+        </div>
+        <button type="button" class="moment-modal-close" aria-label="{{ if eq .Site.Language.Lang "en" }}Close{{ else }}关闭{{ end }}">&times;</button>
+      </div>
+      <p class="moment-modal-desc">
+        {{ if eq .Site.Language.Lang "en" }}Nickname and email are required to like or comment. Your name will be visible to everyone after liking.{{ else }}需要昵称和邮箱不为空才可以点赞和评论，点赞后大家都能看到你的名字。{{ end }}
+      </p>
+      <form class="moment-modal-form" onsubmit="return false;">
+        <div class="moment-modal-field">
+          <label for="moment-modal-nick">{{ if eq .Site.Language.Lang "en" }}Nickname{{ else }}昵称{{ end }} <span class="required">*</span></label>
+          <input type="text" id="moment-modal-nick" class="moment-modal-input-nick" placeholder="{{ if eq .Site.Language.Lang "en" }}Enter your nickname{{ else }}请输入你的昵称{{ end }}" maxlength="20" required />
+        </div>
+        <div class="moment-modal-field">
+          <label for="moment-modal-email">{{ if eq .Site.Language.Lang "en" }}Email{{ else }}邮箱{{ end }} <span class="required">*</span></label>
+          <input type="email" id="moment-modal-email" class="moment-modal-input-email" placeholder="{{ if eq .Site.Language.Lang "en" }}name@example.com (private){{ else }}name@example.com (严格保密){{ end }}" maxlength="50" required />
+        </div>
+        <div class="moment-modal-footer">
+          <button type="button" class="moment-modal-btn btn-cancel">{{ if eq .Site.Language.Lang "en" }}Cancel{{ else }}取消{{ end }}</button>
+          <button type="submit" class="moment-modal-btn btn-confirm">{{ if eq .Site.Language.Lang "en" }}Confirm Like{{ else }}确认点赞{{ end }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{ end }}
