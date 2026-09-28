@@ -98,9 +98,14 @@ defaultContentLanguage = 'zh-cn'
 
 ## 📝 短代码使用示例 (Shortcodes)
 
+> [!NOTE]
+> 短代码（Shortcodes）是 Hugo 专有的模板扩展语法。GitHub 纯静态渲染引擎不会执行 Hugo 模板解析，因此在博文中编写短代码时，将在编译生成的实际网站页面中呈现完整的交互式组件。
+
 ### 1. 交互式 FileTree 目录树
 
-```markdown
+在文章中编写：
+
+````markdown
 {{</* filetree title="工程目录" */>}}
 my-project/
 ├── content/
@@ -109,11 +114,17 @@ my-project/
 │   └── moments/
 └── hugo.toml
 {{</* /filetree */>}}
-```
+````
+
+**效果特性**：在站点中自动渲染为可交互的树形结构，自动识别文件格式并赋予色彩图标，支持点击折叠/展开子目录。
+
+---
 
 ### 2. 多选项卡 Tabs
 
-```markdown
+在文章中编写：
+
+````markdown
 {{</* tabs items="Go,Python,JavaScript" */>}}
   {{</* tab */>}}
   ```go
@@ -131,26 +142,52 @@ my-project/
   ```
   {{</* /tab */>}}
 {{</* /tabs */>}}
-```
+````
+
+**效果特性**：在站点中自动渲染为现代化无边框选项卡，点击即可平滑切换不同编程语言或框架的代码范例。
+
+---
 
 ### 3. 信息气泡 Callout
 
-```markdown
+在文章中编写：
+
+````markdown
 {{</* callout type="tip" title="小提示" */>}}
 这是一个开箱即用的提示气泡。
 {{</* /callout */>}}
-```
+````
+
+**在网站上的呈现效果**（支持 `note` / `tip` / `warning` / `danger` 四种情境）：
+
+> [!TIP]
+> **小提示**  
+> 这是一个开箱即用的提示气泡。
+
+---
+
+### 4. 终端录屏播放器 Asciinema
+
+在文章中编写：
+
+````markdown
+{{</* asciinema key="demo" rows="12" autoplay="false" */>}}
+````
+
+**效果特性**：本地免外链依赖，以极轻量终端动画无损回放命令执行过程，支持一键复制代码。
 
 ---
 
 ## 🛠️ 本地预览示例站点 (Preview Example Site)
+
+进入示例目录即可一键启动完整功能预览：
 
 ```bash
 cd exampleSite
 hugo server --themesDir ../..
 ```
 
-访问 `http://localhost:1313/` 即可体验包含全功能演示的站点。
+浏览器访问 `http://localhost:1313/` 即可直接体验包含朋友圈、多选项卡、交互目录树与离线搜索的全套功能。
 
 ---
 
