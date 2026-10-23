@@ -1,0 +1,22 @@
+/* ==========================================================================
+   朋友圈互动区：空态与分隔线修正
+   —— 无点赞、无评论、输入栏未展开时，容器不渲染空灰盒与悬空小三角
+   —— 状态 class（is-empty / has-likes / has-comments）由
+      assets/js/modules/12-moments-box-sync.js 维护
+   ========================================================================== */
+
+.moment-interactions-box.is-empty {
+  display: none !important;
+}
+
+/* 没有评论列表时，点赞行不该带底部分隔线与多余外边距 */
+.moment-interactions-box:not(.has-comments) .moment-likes-row {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* 没有点赞行时，评论列表顶部不该有多余分隔线与内边距 */
+.moment-interactions-box:not(.has-likes) .moment-comments-list {
+  border-top: 0;
+  padding-top: 0;
+}

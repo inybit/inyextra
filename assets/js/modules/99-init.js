@@ -15,5 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typeof window.InyBit.initBlogSidebarTree === 'function') window.InyBit.initBlogSidebarTree();
   if (typeof window.InyBit.initMomentsModal === 'function') window.InyBit.initMomentsModal();
   if (typeof window.InyBit.initMoments === 'function') window.InyBit.initMoments();
+  if (typeof window.InyBit.initMomentsBoxSync === 'function') window.InyBit.initMomentsBoxSync();
   if (typeof window.InyBit.initArtalkComments === 'function') window.InyBit.initArtalkComments();
 });
