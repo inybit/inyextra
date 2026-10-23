@@ -152,7 +152,9 @@ theme = 'inyextra'
 # 自托管评论系统 Artalk 配置
 [params.artalk]
   enable = true
-  server = "https://artalk.inybit.com"
+  # 部署时填入你自己的 Artalk 服务地址（例如 https://artalk.example.com）。
+  # 留空则主题不渲染评论区，示例站也不会向任何外部后端发起请求。
+  server = ""
   site = "inybit's blog"
   placeholder = "说点什么吧..."
   emoticons = "https://cdn.jsdelivr.net/gh/ArtalkJS/Emoticons/grpm/"

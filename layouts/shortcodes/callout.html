@@ -1,6 +1,6 @@
 {{- $type := .Get "type" | default (.Get 0) | default "note" -}}
 {{- $title := .Get "title" -}}
-{{- $trimmedInner := strings.TrimSpace .Inner -}}
+{{- $trimmedInner := trim .Inner " \n\r\t" -}}
 <div class="callout callout-{{ $type }}">
   <div class="callout-icon" aria-hidden="true">
     {{- if or (eq $type "tip") (eq $type "idea") (eq $type "success") -}}

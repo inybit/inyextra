@@ -19,6 +19,12 @@
   {{ end }}
 {{ end }}
 
+{{/* No backend configured → render nothing (avoid an empty comments card) */}}
+{{ $artalkServer := .Site.Params.artalk.server | default "" }}
+{{ if not $artalkServer }}
+  {{ $artalkEnabled = false }}
+{{ end }}
+
 {{ if $artalkEnabled }}
 {{/* Load Artalk CSS & JS on demand */}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.css">

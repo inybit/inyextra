@@ -8,7 +8,7 @@
 {{- $isLink := not (not $href) -}}
 {{- $trimmedInner := "" -}}
 {{- with .Inner -}}
-  {{- $trimmedInner = strings.TrimSpace . -}}
+  {{- $trimmedInner = trim . " \n\r\t" -}}
 {{- end -}}
 
 {{- if $isLink -}}
