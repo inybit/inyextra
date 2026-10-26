@@ -17,6 +17,9 @@
     var pageKey = artalkEl.getAttribute('data-page-key') || window.location.pathname;
     var pageTitle = artalkEl.getAttribute('data-page-title') || document.title;
     var placeholder = artalkEl.getAttribute('data-placeholder') || '说点什么吧... (文明你我他，和平靠大家)';
+    // Emoticons: prefer site config (data-emoticons), fall back to the official Artalk pack
+    var emoticonsUrl = (artalkEl.getAttribute('data-emoticons') || '').trim() ||
+      'https://cdn.jsdelivr.net/gh/ArtalkJS/Emoticons/grps/default.json';
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     // 1. Immediately fetch and display Page Views (PV) and Comment Count
@@ -61,7 +64,7 @@
           gravatar: {
             mirror: gravatarMirror
           },
-          emoticons: 'https://cdn.jsdelivr.net/gh/ArtalkJS/Emoticons/grpm/'
+          emoticons: emoticonsUrl
         });
 
         if (window.artalkInstance && pvEl) {
