@@ -162,7 +162,6 @@ theme = 'inyextra'
   countEl = "#artalk_count"
   flatMode = "auto"
   gravatarMirror = "https://cravatar.cn/avatar/"
-  gravatarDefault = "identicon" # 可选: "identicon" (几何图案), "retro" (8-bit像素脸), "monsterid" (怪兽), "robohash" (机器人)
 
 # 朋友圈自定义封面与头像
 [params.moments]

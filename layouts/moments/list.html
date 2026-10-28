@@ -1,9 +1,9 @@
 {{ define "main" }}
+{{/* 后端 Artalk frontend_conf.gravatar 优先；下面的 data-gravatar-mirror 仅在服务端未配置 gravatar.mirror 时生效 */}}
 <div class="moments-page-container"
      data-artalk-server="{{ .Site.Params.artalk.server | default "" }}"
      data-artalk-site="{{ .Site.Params.artalk.site | default .Site.Title }}"
-     data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}"
-     data-gravatar-default="{{ .Site.Params.artalk.gravatarDefault | default "identicon" }}">
+     data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}">
   {{/* Artalk v2.10.0 CSS & JS for Moments */}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.10.0/Artalk.js"></script>
