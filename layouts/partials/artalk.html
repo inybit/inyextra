@@ -60,6 +60,7 @@
     </div>
 
     {{/* Live Container */}}
+    {{/* 后端 Artalk frontend_conf.gravatar 优先；下面的 data-gravatar-mirror 仅在服务端未配置 gravatar.mirror 时生效 */}}
     <div id="artalk-comments" class="artalk-wrapper"
          data-server="{{ .Site.Params.artalk.server }}"
          data-site="{{ .Site.Params.artalk.site | default "inybit's blog" }}"
@@ -72,8 +73,7 @@
          data-count-el="{{ .Site.Params.artalk.countEl | default "#artalk_count" }}"
          data-flat-mode="{{ .Site.Params.artalk.flatMode | default "auto" }}"
          data-lang="{{ if eq .Site.Language.Lang "en" }}en{{ else }}zh-CN{{ end }}"
-         data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}"
-         data-gravatar-default="{{ .Site.Params.artalk.gravatarDefault | default "identicon" }}">
+         data-gravatar-mirror="{{ .Site.Params.artalk.gravatarMirror | default "https://cravatar.cn/avatar/" }}">
     </div>
   </div>
 </section>

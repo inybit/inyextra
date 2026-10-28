@@ -76,7 +76,6 @@ defaultContentLanguage = 'zh-cn'
   site = "My Blog"
   placeholder = "说点什么吧..."
   gravatarMirror = "https://cravatar.cn/avatar/"
-  gravatarDefault = "identicon"
 
 # 朋友圈自定义封面与头像
 [params.moments]
