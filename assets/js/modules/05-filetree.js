@@ -49,21 +49,23 @@
       var lines = rawText.split('\n').filter(function (l) { return l.trim().length > 0; });
       var items = [];
 
+      // 缩进按树形前缀计算：每个 ├──/└──/│ 符号串算一级，
+      // 首个符号之前的空格按最小缩进步长折算，避免 2/4 空格源码被成倍放大。
+      var indentUnit = 4;
+      var leads = [];
       lines.forEach(function (line) {
-        var depth = 0;
-        var clean = line;
+        var m = line.match(/^(\s+)/);
+        if (m) leads.push(m[1].length);
+      });
+      if (leads.length) indentUnit = Math.min.apply(null, leads);
 
-        var prefixMatch = line.match(/^[\s│├└─*•\-]+/);
-        if (prefixMatch) {
-          var p = prefixMatch[0];
-          var indentSpaces = p.replace(/[├└─*•\-]/g, ' ').length;
-          depth = Math.floor(indentSpaces / 2);
-          clean = line.slice(p.length).trim();
-        } else {
-          var leadingSpaces = line.search(/\S|$/);
-          depth = Math.floor(leadingSpaces / 2);
-          clean = line.trim();
-        }
+      lines.forEach(function (line) {
+        var prefixMatch = line.match(/^[\s│├└─|+*•\-]*/);
+        var prefix = prefixMatch ? prefixMatch[0] : '';
+        var leadSpaces = (prefix.match(/^\s*/) || [''])[0].length;
+        var glyphRuns = (prefix.match(/[│├└─|+*•\-]+/g) || []).length;
+        var depth = glyphRuns + Math.floor(leadSpaces / indentUnit);
+        var clean = line.slice(prefix.length).trim();
 
         if (!clean) return;
 
@@ -101,7 +103,7 @@
 
         var rowEl = document.createElement('div');
         rowEl.className = 'tree-node-row';
-        rowEl.style.paddingLeft = (item.depth * 18 + 10) + 'px';
+        rowEl.style.paddingLeft = 'calc(0.6rem + ' + (item.depth * 2) + 'ch)';
 
         if (item.isFolder) {
           var chevron = document.createElement('span');
