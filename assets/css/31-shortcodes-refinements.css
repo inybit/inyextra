@@ -96,6 +96,7 @@
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 12px;
+  padding-left: 4px;
   border-radius: 6px;
   cursor: default;
   transition: background-color 0.15s ease;
@@ -135,8 +136,9 @@
 .tree-children {
   display: none;
   position: relative;
-  margin-left: 8px;
+  margin-left: 12px;
   border-left: 1px dashed var(--border-color);
+  padding-left: 4px;
 }
 
 .tree-folder.is-open > .tree-children {
