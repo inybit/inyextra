@@ -103,7 +103,6 @@
 
         var rowEl = document.createElement('div');
         rowEl.className = 'tree-node-row';
-        rowEl.style.paddingLeft = 'calc(0.6rem + ' + (item.depth * 2) + 'ch)';
 
         if (item.isFolder) {
           var chevron = document.createElement('span');
